@@ -9,16 +9,15 @@ void sure(GtkWidget *widget,gpointer context_object)
 {
    GtkWidget *dialog = NULL;
    GtkWidget *curr = g_object_get_data (context_object, "curr");
-   //dialog = gtk_message_dialog_new (GTK_WINDOW (curr), GTK_DIALOG_MODAL , GTK_MESSAGE_INFO , GTK_BUTTONS_YES_NO, "Esta seguro que quiere salir?");
-   dialog = gtk_message_dialog_new (GTK_WINDOW (curr), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "Hello World!");
+   dialog = gtk_message_dialog_new (GTK_WINDOW (curr), GTK_DIALOG_MODAL , GTK_MESSAGE_QUESTION , GTK_BUTTONS_YES_NO, "Esta seguro que quiere salir?");
+   //dialog = gtk_message_dialog_new (GTK_WINDOW (curr), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "Hello World!");
    gtk_window_set_title(GTK_WINDOW(dialog), "Salir?");
    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES){
       gtk_main_quit();
    }
    gtk_widget_destroy (dialog);
-
-
+	gtk_widget_show(curr);
 }
 void prev_window(GtkWidget *widget, gpointer context_object ){
    GtkWidget *prev = g_object_get_data (context_object, "prev");
@@ -29,7 +28,6 @@ void prev_window(GtkWidget *widget, gpointer context_object ){
 gint grab_int_value (GtkSpinButton *button, gpointer user_data){
    return gtk_spin_button_get_value_as_int (button);
 }
-
 GtkWidget* create_integer_spin_button (void){
    GtkWidget *window, *button;
    GtkAdjustment *adjustment;
@@ -37,7 +35,6 @@ GtkWidget* create_integer_spin_button (void){
    button = gtk_spin_button_new (adjustment, 1, 0);
    return button;
 }
-
 static void Ejec_Per (GtkWidget *wid,gpointer context_object){
    GtkWidget *window2 = NULL;
   	GtkWidget *box = NULL;
