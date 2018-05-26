@@ -1,9 +1,141 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 #include <string.h>
+#include <ctype.h>
 
-void Algoritmos(GtkWidget *widget, gpointer user_data){
+int isNumericString(const gchar *s){
+   int i=0, isNumeric = 0, ctDecimalPointsSeen=0;
+   while(s[i] != '\0'){
+      if (!isdigit(s[i])){         
+         isNumeric=0;
+         break;
+      }
+      i += 1;
+      isNumeric = 1;
+   }
+   return isNumeric;
+}
+void prev_window(GtkWidget *widget, gpointer context_object ){
+   GtkWidget *prev = g_object_get_data (context_object, "prev");
+   GtkWidget *curr = g_object_get_data (context_object, "curr");
+	gtk_widget_show(prev);
+   gtk_widget_destroy(curr);
+}
+gint grab_int_value (GtkSpinButton *button, gpointer user_data){
+   return gtk_spin_button_get_value_as_int (button);
+}
 
+void Compute(gpointer context_object){
+
+}
+void test_a(GtkWidget *widget, gpointer context_object){//Test Algoritmos
+   
+   GtkWidget *cb_rm = g_object_get_data (context_object, "cb_rm");
+   GtkWidget *cb_edf = g_object_get_data (context_object, "cb_edf");
+   GtkWidget *cb_llf = g_object_get_data (context_object, "cb_llf");
+   GtkWidget *label_a = g_object_get_data (context_object, "label_a");
+
+   if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+      gtk_label_set_text(GTK_LABEL(label_a),"" );      
+      Compute(context_object);
+   } else {
+      gtk_label_set_text(GTK_LABEL(label_a),"Tiene que seleccionar minimo 1 algoritmo" );
+   }
+
+
+}
+void Algoritmos( gpointer context_object){
+   GtkWidget *window3 = NULL;
+  	GtkWidget *box = NULL;
+   GtkWidget *b_prev = NULL;
+   GtkWidget *b_finish = NULL;
+   GtkWidget *win_prev = g_object_get_data (context_object, "curr");
+
+   gtk_widget_hide(GTK_WIDGET(win_prev));
+
+   //Crear Ventana
+   window3 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+   gtk_container_set_border_width (GTK_CONTAINER (window3), 8);
+	gtk_window_set_title (GTK_WINDOW (window3), "Tipos de Algoritmos");
+	gtk_window_set_position (GTK_WINDOW (window3), GTK_WIN_POS_CENTER);   
+	gtk_widget_realize (window3);
+   g_object_set_data (context_object, "prev", win_prev);
+   g_object_set_data (context_object, "curr", window3 );
+	g_signal_connect (window3, "destroy", gtk_main_quit , NULL);
+
+   // Create a box with buttons
+	box = gtk_box_new (TRUE, 6);
+   gtk_container_add (GTK_CONTAINER (window3), box);
+
+   //Crear los checkboxs
+   GtkWidget *cb_rm = gtk_check_button_new_with_label ("RM");
+	gtk_box_pack_start (GTK_BOX (box),cb_rm , TRUE, TRUE , 10);
+   GtkWidget *cb_edf = gtk_check_button_new_with_label ("EDF");
+	gtk_box_pack_start (GTK_BOX (box),cb_edf , TRUE, TRUE , 10);
+   GtkWidget *cb_llf = gtk_check_button_new_with_label ("LLF");
+	gtk_box_pack_start (GTK_BOX (box),cb_llf , TRUE, TRUE , 10);
+
+	b_prev = gtk_button_new_with_label("Previous");
+	b_finish = gtk_button_new_with_label("Finish");
+
+   g_object_set_data (context_object, "prev", win_prev);
+   g_object_set_data (context_object, "curr", window3);
+	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window),context_object );
+   g_object_set_data (context_object, "cb_rm",cb_rm );
+   g_object_set_data (context_object, "cb_edf",cb_edf );
+   g_object_set_data (context_object, "cb_llf",cb_llf );
+   GtkWidget *label_a = gtk_label_new(""); //Label que indica si los algoritmos son correctos
+   g_object_set_data (context_object, "label_a",label_a);
+	g_signal_connect (G_OBJECT (b_finish), "clicked", G_CALLBACK (test_a), context_object );
+	gtk_box_pack_start (GTK_BOX (box), label_a, TRUE,TRUE , 10);      
+	//gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, TRUE, 10);
+	gtk_box_pack_start (GTK_BOX (box), b_finish, TRUE,TRUE , 10);
+	gtk_widget_show_all (window3);
+}
+void test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
+   GtkWidget *s_button = g_object_get_data (context_object, "s_button");
+   GtkWidget *label = g_object_get_data (context_object, "label_c");
+
+   //Crear labels e input widgets
+   gint N_tareas = grab_int_value( (gpointer)s_button,"");
+
+   const gchar *text;
+   char error[100],temp[100];
+   int te = 0; //Tiempo de ejecucion
+   int p = 0;  //Periodo
+   GtkWidget *entry_t;
+   GtkWidget *entry_p; 
+   for(int i = 0;i<N_tareas;i++){
+
+      //Obtener entradas
+      sprintf(temp,"entry_t%d",i+1);      
+      entry_t = g_object_get_data (context_object, temp); //Entrada Tiempo de Ejecucion
+      sprintf(temp,"entry_p%d",i+1);
+      entry_p = g_object_get_data (context_object, temp); //Entrada Periodo
+
+      text = gtk_entry_get_text( GTK_ENTRY(entry_t));
+      if(!isNumericString(text)){
+         sprintf(error,"Caracter invalido en tiempo de ejecucion de Tarea %d, solo se aceptan numeros enteros",i+1);
+         gtk_label_set_text(GTK_LABEL(label),error);
+         break;
+      }
+      te = atoi(text);
+      text = gtk_entry_get_text( GTK_ENTRY(entry_p));
+
+      if(!isNumericString(text)){
+         sprintf(error,"Caracter invalido en el periodo de Tarea %d, solo se aceptan numeros enteros",i+1);
+         gtk_label_set_text(GTK_LABEL(label),error);
+         break;
+      }
+      p = atoi(text);
+      if(te > p){//Si el tiempo de ejecucion es mayor al periodo
+         sprintf(error,"El tiempo de ejecucion de la Tarea %d es mayor que el periodo, debe ser menor o igual",i+1);
+         gtk_label_set_text(GTK_LABEL(label),error);
+         break;
+      }
+      gtk_label_set_text(GTK_LABEL(label),"");
+      Algoritmos(context_object);
+   }
 }
 void sure(GtkWidget *widget,gpointer context_object)
 {
@@ -16,17 +148,8 @@ void sure(GtkWidget *widget,gpointer context_object)
    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES){
       gtk_main_quit();
    }
-   gtk_widget_destroy (dialog);
+   gtk_widget_destroy(dialog);
 	gtk_widget_show(curr);
-}
-void prev_window(GtkWidget *widget, gpointer context_object ){
-   GtkWidget *prev = g_object_get_data (context_object, "prev");
-   GtkWidget *curr = g_object_get_data (context_object, "curr");
-	gtk_widget_show(prev);
-   gtk_widget_destroy(curr);
-}
-gint grab_int_value (GtkSpinButton *button, gpointer user_data){
-   return gtk_spin_button_get_value_as_int (button);
 }
 GtkWidget* create_integer_spin_button (void){
    GtkWidget *window, *button;
@@ -35,7 +158,7 @@ GtkWidget* create_integer_spin_button (void){
    button = gtk_spin_button_new (adjustment, 1, 0);
    return button;
 }
-static void Ejec_Per (GtkWidget *wid,gpointer context_object){
+void Ejec_Per (GtkWidget *wid,gpointer context_object){
    GtkWidget *window2 = NULL;
   	GtkWidget *box = NULL;
    GtkWidget *b_next = NULL;
@@ -54,30 +177,54 @@ static void Ejec_Per (GtkWidget *wid,gpointer context_object){
 	gtk_widget_realize (window2);
    g_object_set_data (context_object, "prev", win);
    g_object_set_data (context_object, "curr", window2 );
-	g_signal_connect (window2, "destroy",G_CALLBACK (sure) , context_object);
+	g_signal_connect (window2, "destroy", gtk_main_quit , NULL);
 
    // Create a box with buttons
-	box = gtk_box_new (TRUE, 6);
+	box = gtk_box_new (TRUE, 1);
    gtk_container_add (GTK_CONTAINER (window2), box);
 
    //Crear labels e input widgets
    gint N_tareas = grab_int_value( (gpointer)s_button,"");
    GtkWidget *label_t[N_tareas]; //Label Tiempo de Ejecucion
    GtkWidget *label_p[N_tareas]; //Label Periodo
-
+   GtkWidget *entry_t[N_tareas]; //Input Tiempo de Ejecucion
+   GtkWidget *entry_p[N_tareas]; //Input Periodo
+   char label[100];
    for(int i = 0;i<N_tareas;i++){
-      label_t[i] = gtk_label_new("Tiempo de Ejecucion: ");
-      label_p[i] = gtk_label_new("Periodo: ");
-	   gtk_box_pack_start (GTK_BOX (box), label_t[i], TRUE, TRUE, 10); 
-	   gtk_box_pack_start (GTK_BOX (box), label_p[i], TRUE, TRUE, 10); 
+      sprintf(label,"Tiempo de Ejecucion de Tarea %d: ",i+1);
+      label_t[i] = gtk_label_new(label);
+      sprintf(label,"Periodo de Tarea %d: ",i+1);
+      label_p[i] = gtk_label_new(label);
+      entry_t[i]= gtk_entry_new();
+      entry_p[i]= gtk_entry_new();
+      GtkWidget *hbox1 = gtk_box_new (FALSE, 1);
+      GtkWidget *hbox2 = gtk_box_new (FALSE, 1);
+      gtk_box_set_homogeneous (GTK_BOX (hbox1), TRUE);
+      gtk_box_set_homogeneous (GTK_BOX (hbox2), TRUE);      
+	   gtk_box_pack_start (GTK_BOX (box), hbox1, TRUE ,TRUE , 10);
+	   gtk_box_pack_start (GTK_BOX (box), hbox2, TRUE ,TRUE , 10);      
+	   gtk_box_pack_start (GTK_BOX (hbox1), label_t[i], TRUE ,TRUE , 10);
+	   gtk_box_pack_start(GTK_BOX (hbox1), entry_t[i], TRUE ,TRUE , 10); 
+	   gtk_box_pack_start (GTK_BOX (hbox2), label_p[i], TRUE ,TRUE , 10);
+	   gtk_box_pack_start (GTK_BOX (hbox2), entry_p[i], TRUE ,TRUE , 10);
+      sprintf(label,"entry_t%d",i+1);
+      g_object_set_data (context_object, label,entry_t[i]);
+      sprintf(label,"entry_p%d",i+1);
+      g_object_set_data (context_object, label ,entry_p[i]);
    }
 	b_next = gtk_button_new_with_label("Next");
 	b_prev = gtk_button_new_with_label("Previous");
 
-	gtk_box_pack_start (GTK_BOX (box), b_next, TRUE, TRUE, 10);
-	gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, FALSE, 10);
-	g_signal_connect (G_OBJECT (b_next), "clicked", G_CALLBACK (Algoritmos), context_object );
+   g_object_set_data (context_object, "prev", win);
+   g_object_set_data (context_object, "curr", window2);
 	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window),context_object );
+   GtkWidget *label_correctitud = gtk_label_new(""); //Label que indica si las entradas son correctas
+   g_object_set_data (context_object, "label_c",label_correctitud);
+	g_signal_connect (G_OBJECT (b_next), "clicked", G_CALLBACK (test_e), context_object );
+	gtk_box_pack_start (GTK_BOX (box), label_correctitud , TRUE, TRUE, 10);
+   gtk_box_pack_start (GTK_BOX (box), b_next, TRUE, TRUE , 10);
+	//gtk_box_pack_start (GTK_BOX (box), b_prev,TRUE , TRUE, 10);
+
 
 	gtk_widget_show_all (window2);
 }
