@@ -3,6 +3,16 @@
 #include <string.h>
 #include <ctype.h>
 
+void CrearMatriz(int caso,int N_tareas,int *p,int *te){
+   printf("Caso: %d\n",caso);
+   printf("N_tareas: %d\n",N_tareas);
+   
+   for(int i = 0;i<N_tareas;i++){
+      printf("p[%d]: %d\n",i,p[i]);
+      printf("te[%d]: %d\n",i,te[i]);
+   }   
+   //gtk_main_quit();
+}
 int isNumericString(const gchar *s){
    int i=0, isNumeric = 0, ctDecimalPointsSeen=0;
    while(s[i] != '\0'){
@@ -26,7 +36,47 @@ gint grab_int_value (GtkSpinButton *button, gpointer user_data){
 }
 
 void Compute(gpointer context_object){
+   GtkWidget *s_button = g_object_get_data (context_object, "s_button");
+   const gchar *text;
+   char temp[100];
+   GtkWidget *entry_t;
+   GtkWidget *entry_p; 
+   //Crear labels e input widgets
+   gint N_tareas = grab_int_value( (gpointer)s_button,"");
+   int p[N_tareas],te[N_tareas];
+   for(int i = 0;i<N_tareas;i++){
+      //Obtener entradas
+      sprintf(temp,"entry_t%d",i+1);      
+      entry_t = g_object_get_data (context_object, temp); //Entrada Tiempo de Ejecucion
+      sprintf(temp,"entry_p%d",i+1);
+      entry_p = g_object_get_data (context_object, temp); //Entrada Periodo
+      text = gtk_entry_get_text( GTK_ENTRY(entry_t));
+      te[i] = atoi(text);
+      text = gtk_entry_get_text( GTK_ENTRY(entry_p));
+      p[i] = atoi(text);
+   }
 
+   GtkWidget *cb_rm = g_object_get_data (context_object, "cb_rm");
+   GtkWidget *cb_edf = g_object_get_data (context_object, "cb_edf");
+   GtkWidget *cb_llf = g_object_get_data (context_object, "cb_llf");
+   int caso=0;
+   if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+      caso = 1;//Todos los algoritmo solicitados
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+      caso = 2;//solo EDF y LLF
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) ){
+      caso = 3;//solo RM y EDF
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+      caso = 4;//solo RM y LLF
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm))){
+      caso = 5;//solo RM
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf))){
+      caso = 6;//Solo EDF
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+      caso = 7;//Solo LLF
+   }
+
+   CrearMatriz(caso,N_tareas,p,te);
 }
 void test_a(GtkWidget *widget, gpointer context_object){//Test Algoritmos
    
@@ -41,7 +91,7 @@ void test_a(GtkWidget *widget, gpointer context_object){//Test Algoritmos
    } else {
       gtk_label_set_text(GTK_LABEL(label_a),"Tiene que seleccionar minimo 1 algoritmo" );
    }
-
+   
 
 }
 void Algoritmos( gpointer context_object){
@@ -92,7 +142,7 @@ void Algoritmos( gpointer context_object){
 	gtk_box_pack_start (GTK_BOX (box), b_finish, TRUE,TRUE , 10);
 	gtk_widget_show_all (window3);
 }
-void test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
+int test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
    GtkWidget *s_button = g_object_get_data (context_object, "s_button");
    GtkWidget *label = g_object_get_data (context_object, "label_c");
 
@@ -106,7 +156,6 @@ void test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
    GtkWidget *entry_t;
    GtkWidget *entry_p; 
    for(int i = 0;i<N_tareas;i++){
-
       //Obtener entradas
       sprintf(temp,"entry_t%d",i+1);      
       entry_t = g_object_get_data (context_object, temp); //Entrada Tiempo de Ejecucion
@@ -117,7 +166,7 @@ void test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
       if(!isNumericString(text)){
          sprintf(error,"Caracter invalido en tiempo de ejecucion de Tarea %d, solo se aceptan numeros enteros",i+1);
          gtk_label_set_text(GTK_LABEL(label),error);
-         break;
+         return -1;
       }
       te = atoi(text);
       text = gtk_entry_get_text( GTK_ENTRY(entry_p));
@@ -125,17 +174,17 @@ void test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
       if(!isNumericString(text)){
          sprintf(error,"Caracter invalido en el periodo de Tarea %d, solo se aceptan numeros enteros",i+1);
          gtk_label_set_text(GTK_LABEL(label),error);
-         break;
+         return -1;
       }
       p = atoi(text);
       if(te > p){//Si el tiempo de ejecucion es mayor al periodo
          sprintf(error,"El tiempo de ejecucion de la Tarea %d es mayor que el periodo, debe ser menor o igual",i+1);
          gtk_label_set_text(GTK_LABEL(label),error);
-         break;
+         return -1;
       }
       gtk_label_set_text(GTK_LABEL(label),"");
-      Algoritmos(context_object);
    }
+   Algoritmos(context_object);
 }
 void sure(GtkWidget *widget,gpointer context_object)
 {
