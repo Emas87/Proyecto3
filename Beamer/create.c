@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]){
 
-   FILE *fp_edit = fopen("edit.txt", "w");
+   FILE *fp_edit = fopen("edit.txt", "a");
  
  
    if (fp_edit == NULL)
