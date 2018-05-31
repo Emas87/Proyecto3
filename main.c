@@ -3,14 +3,82 @@
 #include <string.h>
 #include <ctype.h>
 
+struct matrixs{
+   int **rm;
+   int **edf;
+   int **llf;
+} matrixs;
+
+// Recursive function to return gcd of a and b
+int gcd(int a, int b)
+{
+    // base case
+    if (a == b)
+        return a;
+    // a is greater
+    if (a > b)
+        return gcd(a-b, b);
+    return gcd(a, b-a);
+}
+// Function to return LCM of two numbers
+int mcm(int a, int b){
+    return (a*b)/gcd(a, b);
+}
+void RM(int N_tareas,int *p,int *te,int mcm_r,int **output){
+   output[0][mcm_r-1] =1;
+   output[N_tareas-1][0] =2;
+}
+int **EDF(){
+
+}
+int **LLF(){
+
+}
 void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    printf("Caso: %d\n",caso);
    printf("N_tareas: %d\n",N_tareas);
-   
+   struct matrixs output;
+   int mcm_r = 1;//minimo comun multiplo resultado
    for(int i = 0;i<N_tareas;i++){
-      printf("p[%d]: %d\n",i,p[i]);
-      printf("te[%d]: %d\n",i,te[i]);
-   }   
+      mcm_r = mcm(mcm_r,p[i]);
+   }
+   int output_rm[N_tareas][mcm_r];
+   output.rm = output_rm;
+   int output_edf[N_tareas][mcm_r];
+   int output_llf[N_tareas][mcm_r];
+
+   printf("minimo comun multiplo es: %d\n",mcm_r);
+
+   switch(caso){
+      case 1:
+         RM(N_tareas,p,te,mcm_r,output.rm);
+         EDF();
+         LLF();
+      break;
+      case 2:
+         EDF();
+         LLF();
+      break;
+      case 3:
+         RM(N_tareas,p,te,mcm_r,output.rm);
+         EDF();
+      break;
+      case 4:
+         RM(N_tareas,p,te,mcm_r,output.rm);
+         LLF();
+      break;
+      case 5:
+         RM(N_tareas,p,te,mcm_r,output.rm);
+      break;      
+      case 6:
+         EDF();
+      break;
+      case 7:
+         LLF();
+      break;     
+   }
+   printf("%d\n",output.rm[0][mcm_r-1]);
+   printf("%d\n",output.rm[0][N_tareas-1]);   
    //gtk_main_quit();
 }
 int isNumericString(const gchar *s){
