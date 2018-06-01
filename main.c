@@ -5,8 +5,8 @@
 
 struct matrixs{
    int **rm;
-   int **edf;
-   int **llf;
+   int *edf;
+   int *llf;
 } matrixs;
 
 // Recursive function to return gcd of a and b
@@ -24,14 +24,54 @@ int gcd(int a, int b)
 int mcm(int a, int b){
     return (a*b)/gcd(a, b);
 }
-void RM(int N_tareas,int *p,int *te,int mcm_r,int **output){
-   output[0][mcm_r-1] =1;
-   output[N_tareas-1][0] =2;
-}
-int **EDF(){
+void RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
+
+   int cola_ready[N_tareas];
+   int remaining[N_tareas];
+   int tiempo = 0;
+   //Ordenarlos por orden de prioridad 1/p[i]
+   int aux = 0;
+   for(int i = 1; i < N_tareas; i++){
+      for(int j = 0; j < (N_tareas - i); ++j){
+         if(p[j] > p[j+1]){
+            aux = p[j];
+            p[j] = p[j + 1];
+            p[j + 1] = aux;
+            aux = te[j];
+            te[j] = te[j + 1];
+            te[j + 1] = aux;           
+         }
+      }
+   }
+   while(tiempo != mcm_r){
+      for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
+         if(tiempo % p[i] == 0){
+            cola_ready[i] = 1;
+            remaining[i] = te[i];
+         }
+      }
+
+      for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
+
+         if(cola_ready[i] == 1){
+            *((output+i*mcm_r) + tiempo) = 1;
+            //output[i][tiempo] = 1;
+            remaining[i]--;
+            if(remaining[i] == 0){
+               cola_ready[i] = 0;
+            }
+            break;
+         }
+      }
+      tiempo++;
+   }
+
 
 }
-int **LLF(){
+int *EDF(){
+
+}
+int *LLF(){
 
 }
 void CrearMatriz(int caso,int N_tareas,int *p,int *te){
@@ -43,7 +83,8 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
       mcm_r = mcm(mcm_r,p[i]);
    }
    int output_rm[N_tareas][mcm_r];
-   output.rm = output_rm;
+   memset(output_rm, 0, sizeof output_rm );
+   output.rm = (int **)output_rm;
    int output_edf[N_tareas][mcm_r];
    int output_llf[N_tareas][mcm_r];
 
@@ -51,7 +92,7 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
 
    switch(caso){
       case 1:
-         RM(N_tareas,p,te,mcm_r,output.rm);
+//         RM(N_tareas,p,te,mcm_r,(int**)output_rm);
          EDF();
          LLF();
       break;
@@ -60,15 +101,15 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
          LLF();
       break;
       case 3:
-         RM(N_tareas,p,te,mcm_r,output.rm);
+//         RM(N_tareas,p,te,mcm_r,output.rm);
          EDF();
       break;
       case 4:
-         RM(N_tareas,p,te,mcm_r,output.rm);
+//         RM(N_tareas,p,te,mcm_r,output.rm);
          LLF();
       break;
       case 5:
-         RM(N_tareas,p,te,mcm_r,output.rm);
+         RM(N_tareas,p,te,mcm_r,(int*)output_rm);
       break;      
       case 6:
          EDF();
@@ -77,8 +118,18 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
          LLF();
       break;     
    }
-   printf("%d\n",output.rm[0][mcm_r-1]);
-   printf("%d\n",output.rm[0][N_tareas-1]);   
+   printf("output = {\n");
+   for(int i = 0; i < N_tareas; i++){
+      for(int j = 0; j < mcm_r; j++){
+         //printf("%d ",*((output+i*mcm_r) + j));
+         printf("%d ",output_rm[i][j]);
+
+      }
+      printf("\n");
+
+   }
+   printf("}\n");
+
    //gtk_main_quit();
 }
 int isNumericString(const gchar *s){
