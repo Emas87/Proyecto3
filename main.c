@@ -1,158 +1,4 @@
-#include <stdlib.h>
-#include <gtk/gtk.h>
-#include <string.h>
-#include <ctype.h>
-
-struct matrixs{
-   int **rm;
-   int *edf;
-   int *llf;
-} matrixs;
-
-// Recursive function to return gcd of a and b
-int gcd(int a, int b)
-{
-    // base case
-    if (a == b)
-        return a;
-    // a is greater
-    if (a > b)
-        return gcd(a-b, b);
-    return gcd(a, b-a);
-}
-// Function to return LCM of two numbers
-int mcm(int a, int b){
-    return (a*b)/gcd(a, b);
-}
-void RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
-
-   int cola_ready[N_tareas];
-   int remaining[N_tareas];
-   int tiempo = 0;
-   //Ordenarlos por orden de prioridad 1/p[i]
-   int aux = 0;
-   for(int i = 1; i < N_tareas; i++){
-      for(int j = 0; j < (N_tareas - i); ++j){
-         if(p[j] > p[j+1]){
-            aux = p[j];
-            p[j] = p[j + 1];
-            p[j + 1] = aux;
-            aux = te[j];
-            te[j] = te[j + 1];
-            te[j + 1] = aux;           
-         }
-      }
-   }
-   while(tiempo != mcm_r){
-      for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
-         if(tiempo % p[i] == 0){
-            cola_ready[i] = 1;
-            remaining[i] = te[i];
-         }
-      }
-
-      for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
-
-         if(cola_ready[i] == 1){
-            *((output+i*mcm_r) + tiempo) = 1;
-            //output[i][tiempo] = 1;
-            remaining[i]--;
-            if(remaining[i] == 0){
-               cola_ready[i] = 0;
-            }
-            break;
-         }
-      }
-      tiempo++;
-   }
-
-
-}
-int *EDF(){
-
-}
-int *LLF(){
-
-}
-void CrearMatriz(int caso,int N_tareas,int *p,int *te){
-   printf("Caso: %d\n",caso);
-   printf("N_tareas: %d\n",N_tareas);
-   struct matrixs output;
-   int mcm_r = 1;//minimo comun multiplo resultado
-   for(int i = 0;i<N_tareas;i++){
-      mcm_r = mcm(mcm_r,p[i]);
-   }
-   int output_rm[N_tareas][mcm_r];
-   memset(output_rm, 0, sizeof output_rm );
-   output.rm = (int **)output_rm;
-   int output_edf[N_tareas][mcm_r];
-   int output_llf[N_tareas][mcm_r];
-
-   printf("minimo comun multiplo es: %d\n",mcm_r);
-
-   switch(caso){
-      case 1:
-//         RM(N_tareas,p,te,mcm_r,(int**)output_rm);
-         EDF();
-         LLF();
-      break;
-      case 2:
-         EDF();
-         LLF();
-      break;
-      case 3:
-//         RM(N_tareas,p,te,mcm_r,output.rm);
-         EDF();
-      break;
-      case 4:
-//         RM(N_tareas,p,te,mcm_r,output.rm);
-         LLF();
-      break;
-      case 5:
-         RM(N_tareas,p,te,mcm_r,(int*)output_rm);
-      break;      
-      case 6:
-         EDF();
-      break;
-      case 7:
-         LLF();
-      break;     
-   }
-   printf("output = {\n");
-   for(int i = 0; i < N_tareas; i++){
-      for(int j = 0; j < mcm_r; j++){
-         //printf("%d ",*((output+i*mcm_r) + j));
-         printf("%d ",output_rm[i][j]);
-
-      }
-      printf("\n");
-
-   }
-   printf("}\n");
-
-   //gtk_main_quit();
-}
-int isNumericString(const gchar *s){
-   int i=0, isNumeric = 0, ctDecimalPointsSeen=0;
-   while(s[i] != '\0'){
-      if (!isdigit(s[i])){         
-         isNumeric=0;
-         break;
-      }
-      i += 1;
-      isNumeric = 1;
-   }
-   return isNumeric;
-}
-void prev_window(GtkWidget *widget, gpointer context_object ){
-   GtkWidget *prev = g_object_get_data (context_object, "prev");
-   GtkWidget *curr = g_object_get_data (context_object, "curr");
-	gtk_widget_show(prev);
-   gtk_widget_destroy(curr);
-}
-gint grab_int_value (GtkSpinButton *button, gpointer user_data){
-   return gtk_spin_button_get_value_as_int (button);
-}
+#include "matriz.h"
 
 void Compute(gpointer context_object){
    GtkWidget *s_button = g_object_get_data (context_object, "s_button");
@@ -194,9 +40,21 @@ void Compute(gpointer context_object){
    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
       caso = 7;//Solo LLF
    }
-
    CrearMatriz(caso,N_tareas,p,te);
 }
+void prev_window_A(GtkWidget *widget, gpointer context_object ){
+   GtkWidget *prev = g_object_get_data (context_object, "window2");
+   GtkWidget *curr = g_object_get_data (context_object, "window3");
+	gtk_widget_show(prev);
+   gtk_widget_destroy(curr);
+}
+void prev_window_T(GtkWidget *widget, gpointer context_object ){
+   GtkWidget *prev = g_object_get_data (context_object, "window1");
+   GtkWidget *curr = g_object_get_data (context_object, "window2");
+	gtk_widget_show(prev);
+   gtk_widget_destroy(curr);
+}
+
 void test_a(GtkWidget *widget, gpointer context_object){//Test Algoritmos
    
    GtkWidget *cb_rm = g_object_get_data (context_object, "cb_rm");
@@ -218,7 +76,7 @@ void Algoritmos( gpointer context_object){
   	GtkWidget *box = NULL;
    GtkWidget *b_prev = NULL;
    GtkWidget *b_finish = NULL;
-   GtkWidget *win_prev = g_object_get_data (context_object, "curr");
+   GtkWidget *win_prev = g_object_get_data (context_object, "window2");
 
    gtk_widget_hide(GTK_WIDGET(win_prev));
 
@@ -228,9 +86,9 @@ void Algoritmos( gpointer context_object){
 	gtk_window_set_title (GTK_WINDOW (window3), "Tipos de Algoritmos");
 	gtk_window_set_position (GTK_WINDOW (window3), GTK_WIN_POS_CENTER);   
 	gtk_widget_realize (window3);
-   g_object_set_data (context_object, "prev", win_prev);
-   g_object_set_data (context_object, "curr", window3 );
-	g_signal_connect (window3, "destroy", gtk_main_quit , NULL);
+   //g_object_set_data (context_object, "prev", win_prev);
+   //g_object_set_data (context_object, "curr", window3 );
+	//g_signal_connect (window3, "destroy", gtk_main_quit , NULL);
 
    // Create a box with buttons
 	box = gtk_box_new (TRUE, 6);
@@ -247,9 +105,9 @@ void Algoritmos( gpointer context_object){
 	b_prev = gtk_button_new_with_label("Previous");
 	b_finish = gtk_button_new_with_label("Finish");
 
-   g_object_set_data (context_object, "prev", win_prev);
-   g_object_set_data (context_object, "curr", window3);
-	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window),context_object );
+   //g_object_set_data (context_object, "", win_prev);
+   g_object_set_data (context_object, "window3", window3);
+	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window_A),context_object );
    g_object_set_data (context_object, "cb_rm",cb_rm );
    g_object_set_data (context_object, "cb_edf",cb_edf );
    g_object_set_data (context_object, "cb_llf",cb_llf );
@@ -257,7 +115,7 @@ void Algoritmos( gpointer context_object){
    g_object_set_data (context_object, "label_a",label_a);
 	g_signal_connect (G_OBJECT (b_finish), "clicked", G_CALLBACK (test_a), context_object );
 	gtk_box_pack_start (GTK_BOX (box), label_a, TRUE,TRUE , 10);      
-	//gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, TRUE, 10);
+	gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, TRUE, 10);
 	gtk_box_pack_start (GTK_BOX (box), b_finish, TRUE,TRUE , 10);
 	gtk_widget_show_all (window3);
 }
@@ -332,7 +190,7 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
    GtkWidget *b_next = NULL;
    GtkWidget *b_prev = NULL;
    GtkWidget *s_button = g_object_get_data (context_object, "s_button");
-   GtkWidget *win = g_object_get_data (context_object, "top_win");
+   GtkWidget *win = g_object_get_data (context_object, "window1");
 
    //Ocultar ventana anterior
    gtk_widget_hide(GTK_WIDGET(win));
@@ -343,9 +201,7 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
 	gtk_window_set_title (GTK_WINDOW (window2), "Tiempo de Ejecucion y Periodo");
 	gtk_window_set_position (GTK_WINDOW (window2), GTK_WIN_POS_CENTER);   
 	gtk_widget_realize (window2);
-   g_object_set_data (context_object, "prev", win);
-   g_object_set_data (context_object, "curr", window2 );
-	g_signal_connect (window2, "destroy", gtk_main_quit , NULL);
+	//g_signal_connect (window2, "destroy", gtk_main_quit , NULL);
 
    // Create a box with buttons
 	box = gtk_box_new (TRUE, 1);
@@ -383,15 +239,14 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
 	b_next = gtk_button_new_with_label("Next");
 	b_prev = gtk_button_new_with_label("Previous");
 
-   g_object_set_data (context_object, "prev", win);
-   g_object_set_data (context_object, "curr", window2);
-	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window),context_object );
+   g_object_set_data (context_object, "window2", window2);
+	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window_T),context_object );
    GtkWidget *label_correctitud = gtk_label_new(""); //Label que indica si las entradas son correctas
    g_object_set_data (context_object, "label_c",label_correctitud);
 	g_signal_connect (G_OBJECT (b_next), "clicked", G_CALLBACK (test_e), context_object );
 	gtk_box_pack_start (GTK_BOX (box), label_correctitud , TRUE, TRUE, 10);
    gtk_box_pack_start (GTK_BOX (box), b_next, TRUE, TRUE , 10);
-	//gtk_box_pack_start (GTK_BOX (box), b_prev,TRUE , TRUE, 10);
+	gtk_box_pack_start (GTK_BOX (box), b_prev,TRUE , TRUE, 10);
 
 
 	gtk_widget_show_all (window2);
@@ -435,7 +290,7 @@ int main (int argc, char *argv[]){
 
    //Senales
    g_object_set_data (G_OBJECT(b_next), "s_button", s_button);
-   g_object_set_data (G_OBJECT(b_next), "top_win", win );
+   g_object_set_data (G_OBJECT(b_next), "window1", win );
 
    //function_par1 -> s_button = s_button;
    //function_par1 -> win = win;

@@ -1,7 +1,13 @@
+CC=gcc
+CFLAGS= -g -W `pkg-config --cflags --libs gtk+-3.0`
+DEPS = matriz.h
 all: main
 
-main: main.c
-	gcc main.c -o main -g -W `pkg-config --cflags --libs gtk+-3.0 `
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) -c -o $@ $<
+   
+main: main.o
+	$(CC) main.c -o main $(CFLAGS)
 
 clean:
-	rm Productor Consumidor Creador Finalizador
+	rm main *.o
