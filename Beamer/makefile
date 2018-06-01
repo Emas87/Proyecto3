@@ -10,4 +10,4 @@ join: join.c
 	gcc join.c -o join
 
 clean:
-	rm edit.txt final.pdf final.tex
+	rm edit.txt final.pdf final.tex create main join
