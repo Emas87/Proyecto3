@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[]){
+void join(){
 
    FILE *fp_begin = fopen("begin.txt", "r");
    FILE *fp_edit = fopen("edit.txt", "r");
@@ -37,6 +37,5 @@ int main(int argc, char *argv[]){
    fclose(fp_end);
    fclose(fp_final);
 
-   return 0;
 
 }
