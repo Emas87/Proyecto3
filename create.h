@@ -29,13 +29,13 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
    if(modo==0){
       strcpy(file,"edit_RM.txt");
-      strcpy(show_mode,"\\caption{Rate Monotonic}");
+      strcpy(show_mode,"Rate Monotonic");
    } else if(modo==1){
       strcpy(file,"edit_EDF.txt");
-      strcpy(show_mode,"\\caption{Earliest Dead First}");
+      strcpy(show_mode,"Earliest Dead First");
    } else if(modo==2){
       strcpy(file,"edit_LLF.txt");
-      strcpy(show_mode,"\\caption{Least Laxity First}");
+      strcpy(show_mode,"Least Laxity First");
    }
 
    FILE *fp_edit = fopen(file, "w");
@@ -61,7 +61,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
    for(k=0;k<it;k++) {
 
       fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s", "\\frametitle{Table}", "\n");
+      fprintf(fp_edit, "%s %d %s %s %s", "\\frametitle{Tabla ", k+1, show_mode, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
 
@@ -78,10 +78,10 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       for(i=0;i<filas;i++){
          fprintf(fp_edit, "%s", task_name[i]);
          for(j=0;j<columnas[k+1];j++){
-            if(*((tasks+i*mcm_r) + j)==0){
+            if(*((tasks+i*mcm_r) + j+(k*24))==0){
                fprintf(fp_edit, "%s", "& ");
             } 
-            else if(*((tasks+i*mcm_r) + j)==1){
+            else if(*((tasks+i*mcm_r) + j+(k*24))==1){
                fprintf(fp_edit, "%s", task_color[i]);
             }
          }
@@ -89,7 +89,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       }
       
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
-      fprintf(fp_edit, "%s %s", show_mode, "\n");
+      fprintf(fp_edit, "%s %s %s %s", "\\caption{", show_mode, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
 
