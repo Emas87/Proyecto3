@@ -1,5 +1,6 @@
 #include "matriz.h"
 
+
 void Compute(gpointer context_object){
    GtkWidget *s_button = g_object_get_data (context_object, "s_button");
    const gchar *text;

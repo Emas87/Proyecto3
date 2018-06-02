@@ -6,8 +6,8 @@ void join(){
 
    FILE *fp_begin = fopen("begin.txt", "r");
    FILE *fp_edit_RM = fopen("edit_RM.txt", "r");
-   FILE *fp_edit_RDF = fopen("edit_RDF.txt", "r")
-   FILE *fp_edit_LLF = fopen("edit_LLF.txt", "r")
+   FILE *fp_edit_EDF = fopen("edit_EDF.txt", "r");
+   FILE *fp_edit_LLF = fopen("edit_LLF.txt", "r");
    FILE *fp_end = fopen("end.txt", "r");
  
    // Open file to store the result

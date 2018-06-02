@@ -6,7 +6,7 @@
 //modo 1 EDF
 //modo 2 LLF
 
-void create(int ** tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
+void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
 
 /*   int tasks[6][64] = {{1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
                        {0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0},
@@ -55,12 +55,12 @@ void create(int ** tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int e
 
    FILE *fp_edit = fopen(file, "w");
 
-   if (fp_edit == NULL)
+/*   if (fp_edit == NULL)
    {
          puts("Could not open files");
          exit(0);
    }
-
+*/
    int i,j,k,it,resto;
 //   size_t tasks_s = sizeof(tasks[0])/sizeof(tasks[0][0]);
 //   size_t tasks_a = sizeof(tasks)/sizeof(tasks[0]);
@@ -116,8 +116,22 @@ void create(int ** tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int e
       fprintf(fp_edit, "%s %s", str, "\n");
 
       fprintf(fp_edit, "%s %s", "\\hline", "\n");
+
+      for(i=0;i<filas;i++){
+         fprintf(fp_edit, "%s", task_name[i]);
+         for(j=0;j<columnas[k+1];j++){
+            if(*((tasks+i*mcm_r) + j)==0){
+               fprintf(fp_edit, "%s", "& ");
+            } 
+            else if(*((tasks+i*mcm_r) + j)==1){
+               fprintf(fp_edit, "%s", task_color[i]);
+            }
+         }
+         fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
+      }
       
 
+/*
       for(i=0;i<filas;i++){
          fprintf(fp_edit, "%s", task_name[i]);
          for(j=0;j<columnas[k+1];j++){
@@ -130,7 +144,7 @@ void create(int ** tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int e
          }
          fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
       }
-
+*/
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
       fprintf(fp_edit, "%s %s", show_mode, "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");

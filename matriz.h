@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 #include <string.h>
+#include "create.h"
+#include "join.h"
+
 struct matrixs{
    int *rm;
    int *edf;
@@ -285,11 +288,13 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    print_matr((int*)output_rm,(int*)output_edf,(int*)output_llf,N_tareas,mcm_r,pos_f_rm,pos_f_edf,pos_f_llf);
    //printf("posiciones de falla %d %d %d\n",pos_f_rm,pos_f_edf,pos_f_llf);
    //create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int escala){
-   //create((int*)output_rm ,0,N_tareas,mcm_r,pos_f_rm ,escala);//RM
-   //create((int*)output_edf,1,N_tareas,mcm_r,pos_f_edf,escala);//EDF
-   //create((int*)output_llf,2,N_tareas,mcm_r,pos_f_llf,escala);//
-
-
+   create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
+   create((int*)output_edf,1,N_tareas,mcm_r,pos_f_edf,escala);//EDF
+   create((int*)output_llf,2,N_tareas,mcm_r,pos_f_llf,escala);//LLF
+   join();
+   system("pdflatex final.tex");
+   system("evince final.pdf");
+   system("rm *.aux *.log *.nav *.out *.snm *.toc *.vrb");
 
    //gtk_main_quit();
 }
