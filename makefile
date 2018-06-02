@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -g -W `pkg-config --cflags --libs gtk+-3.0`
+CFLAGS= -g -W `pkg-config --cflags --libs gtk+-3.0` -std=c99
 DEPS = matriz.h
 all: main
 
