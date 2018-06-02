@@ -54,7 +54,7 @@ int RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
          }
       }
    }
-   while(tiempo < mcm_r){
+   while(tiempo <= mcm_r){
       for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
          if(tiempo != 0 && tiempo % p[orden[i]] == 0 && remaining[orden[i]]>0){//Se verifica si alguna trea perdio el deadline
             pos_f = tiempo;
@@ -96,7 +96,7 @@ int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    for(int i = 0; i < N_tareas; i++){//inicializar los proximos deadlines
       remain_deadline[i] = 0;
    }
-   while(tiempo < mcm_r){
+   while(tiempo <= mcm_r){
       for(int i = 0; i < N_tareas; i++){
          if(tiempo != 0 && tiempo % p[i] == 0 && remaining[i]>0){//Se verifica si alguna trea perdio el deadline
             pos_f = tiempo;
@@ -137,7 +137,7 @@ int EDF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    for(int i = 0; i < N_tareas; i++){//inicializar los proximos deadlines
       remain_deadline[i] = 0;
    }
-   while(tiempo < mcm_r){
+   while(tiempo <= mcm_r){
       for(int i = 0; i < N_tareas; i++){
          if(tiempo != 0 && tiempo % p[i] == 0 && remaining[i]>0){//Se verifica si alguna trea perdio el deadline
             pos_f = tiempo;
