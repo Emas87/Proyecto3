@@ -1,0 +1,4 @@
+\begin{frame} 
+\frametitle{ Least Laxity First } 
+Explicacion Basica de LLF \\
+\end{frame} 

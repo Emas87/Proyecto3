@@ -1,0 +1,4 @@
+\begin{frame} 
+\frametitle{ Earliest Dead First } 
+Explicacion Basica de EDF \\
+\end{frame} 

@@ -39,6 +39,24 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
    }
 
    FILE *fp_edit = fopen(file, "w");
+   char c;
+
+   if(modo==0){
+      FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
+      while ((c = fgetc(fp_exp_RM)) != EOF)
+         fputc(c, fp_edit);
+      fclose(fp_exp_RM);
+   } else if(modo==1){
+      FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
+      while ((c = fgetc(fp_exp_EDF)) != EOF)
+         fputc(c, fp_edit);
+      fclose(fp_exp_EDF);
+   } else if(modo==2){
+      FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
+      while ((c = fgetc(fp_exp_LLF)) != EOF)
+         fputc(c, fp_edit);
+      fclose(fp_exp_LLF);
+   }
 
    int i,j,k,it,resto;
    int filas,columnas[512];
@@ -124,9 +142,9 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
-      fprintf(fp_edit, "%s %d %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\");
-      fprintf(fp_edit, "%s %d %s", "Posicion Fallo: ", pos_fall, "\\\\");
-      fprintf(fp_edit, "%s %d %s", "mcm: ", mcm_r, "\\\\");
+      fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
 
    }
