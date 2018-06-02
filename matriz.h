@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 #include <string.h>
+#include <math.h>
 #include "create.h"
 #include "join.h"
 #include "clean.h"
@@ -82,50 +83,42 @@ int RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
    }
    return pos_f;
 }
+
 int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    int cola_ready[N_tareas];
    int remaining[N_tareas];
-   int orden[N_tareas];   
    int tiempo = 0;
-   int laxity[N_tareas];
+   int laxity[N_tareas];   
+   int least_laxity=mcm_r;
+   int next = 0;
+   int remain_deadline[N_tareas];
    int pos_f = 0;//posicion donde falla
-
-   //Ordenarlos por orden de prioridad laxity=p[i]-te[i]
-   for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
-      laxity[i]=p[i]-te[i];
-      orden[i]=i;
-   }
-   int aux = 0;
-   for(int i = 1; i < N_tareas; i++){
-      for(int j = 0; j < (N_tareas - i); ++j){
-         if(laxity[orden[j]] > laxity[orden[j]+1]){
-            aux = orden[j];
-            orden[j] = orden[j + 1];
-            orden[j + 1] = aux;
-         }
-      }
+   for(int i = 0; i < N_tareas; i++){//inicializar los proximos deadlines
+      remain_deadline[i] = 0;
    }
    while(tiempo < mcm_r){
-      for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
-         if(tiempo != 0 && tiempo % p[orden[i]] == 0 && remaining[orden[i]]>0){//Se verifica si alguna trea perdio el deadline
+      for(int i = 0; i < N_tareas; i++){
+         if(tiempo != 0 && tiempo % p[i] == 0 && remaining[i]>0){//Se verifica si alguna trea perdio el deadline
             pos_f = tiempo;
          }
-
-         if(tiempo % p[orden[i]] == 0){
-            cola_ready[orden[i]] = 1;
-            remaining[orden[i]] = te[orden[i]];
+         if(tiempo % p[i] == 0){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola de ready
+            cola_ready[i] = 1;
+            remaining[i] = te[i];
+            remain_deadline[i] += p[i];
+         }
+         //Calcular laxity de cada ciclo de tiempo para ver cual tarea sigue
+         laxity[i]=remain_deadline[i]-remaining[i]-tiempo;
+         if((laxity[i] <= least_laxity) && cola_ready[i] == 1){
+               least_laxity = laxity[i];
+               next = i;
          }
       }
-      for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
-         if(cola_ready[orden[i]] == 1){
-            *((output+orden[i]*mcm_r) + tiempo) = 1;//se llena la posicion [i][tiempo]
-            remaining[orden[i]]--;
-            if(remaining[orden[i]] == 0){
-               cola_ready[orden[i]] = 0;
-            }
-            break;
-         }
-      }   
+      *((output+next*mcm_r) + tiempo) = cola_ready[next];//se llena la posicion [next][tiempo]
+      remaining[next]--;
+      if(remaining[next] == 0){
+         cola_ready[next] = 0;
+      }
+      least_laxity = mcm_r;//Se resetea el least lexity para que se calcule en el proximo ciclo 
       if(pos_f == tiempo && tiempo != 0){//Hubo una falla
          tiempo = mcm_r;
       }
@@ -133,7 +126,6 @@ int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    }
    return pos_f;
 }
-
 int EDF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    int cola_ready[N_tareas];
    int remaining[N_tareas];
@@ -226,10 +218,12 @@ void print_matr(int *output_rm,int *output_edf,int *output_llf,int N_tareas,int 
 }
 void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    struct matrixs output;
+   float miu,Un;
    int pos_f_rm = 0,pos_f_edf = 0,pos_f_llf = 0;//En caso de falla se guarda la posicion
    int mcm_r = 1;//minimo comun multiplo resultado
    for(int i = 0;i<N_tareas;i++){
       mcm_r = mcm(mcm_r,p[i]);
+      miu = 0;
    }
    printf("minimo comun multiplo es: %d\n",mcm_r);   
    //La escala va a ser el maximo comun divisor de todos los periodos y los tiempos de ejecucion
@@ -256,6 +250,11 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    int output_llf[N_tareas][mcm_r];
    memset(output_llf, 0, sizeof output_llf );
 
+   //Se calcula el u y U(n)
+   Un = (double)N_tareas*(pow((double)2,(double)1/(double)N_tareas)-1);
+   for(int i = 0;i<N_tareas;i++){
+      miu += (float)te[i]/(float)p[i];
+   }
    int create_mode;
    switch(caso){
       case 1:
