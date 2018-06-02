@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-void create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int * orden,int escala){
+//modo 0 RM
+//modo 1 EDF
+//modo 2 LLF
+
+void create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int escala){
 
 /*   int tasks[6][64] = {{1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
                        {0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0},

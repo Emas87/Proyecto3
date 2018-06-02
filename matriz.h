@@ -12,147 +12,239 @@ gint grab_int_value (GtkSpinButton *button, gpointer user_data){
    return gtk_spin_button_get_value_as_int (button);
 }
 
-//  Recursive function to return gcd of a and b
-int gcd(int a, int b)
+//  Funcion recursiva que devuelve el maximo comun divisor de a y b
+int mcd(int a, int b)
 {
-    // base case
+    // caso base
     if (a == b)
         return a;
-    // a is greater
+    // a es mayor
     if (a > b)
-        return gcd(a-b, b);
-    return gcd(a, b-a);
+        return mcd(a-b, b);
+    return mcd(a, b-a);
 }
-// Function to return LCM of two numbers
+// Funcion que devueleve el minimo comun multiplo de 2 numeros
 int mcm(int a, int b){
-    return (a*b)/gcd(a, b);
+    return (a*b)/mcd(a, b);
 }
-void RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
-
+int RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
    int cola_ready[N_tareas];
    int remaining[N_tareas];
+   int orden[N_tareas];
    int tiempo = 0;
+   int pos_f = 0;//posicion donde falla
+
    //Ordenarlos por orden de prioridad 1/p[i]
+   for(int i = 0; i < N_tareas; i++){
+      orden[i] = i;
+   }
+
    int aux = 0;
-   for(int i = 1; i < N_tareas; i++){
+   for(int i = 1; i < N_tareas; i++){//orden tiene el orden en que se va arevisar las prioridades
       for(int j = 0; j < (N_tareas - i); ++j){
-         if(p[j] > p[j+1]){
-            aux = p[j];
-            p[j] = p[j + 1];
-            p[j + 1] = aux;
-            aux = te[j];
-            te[j] = te[j + 1];
-            te[j + 1] = aux;           
+         if(p[orden[j]] > p[orden[j]+1]){
+            aux = orden[j];
+            orden[j] = orden[j + 1];
+            orden[j + 1] = aux;  
          }
       }
    }
-   while(tiempo != mcm_r){
+   while(tiempo < mcm_r){
       for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
-         if(tiempo % p[i] == 0){
-            cola_ready[i] = 1;
-            remaining[i] = te[i];
+         if(tiempo != 0 && tiempo % p[orden[i]] == 0 && remaining[orden[i]]>0){//Se verifica si alguna trea perdio el deadline
+            pos_f = tiempo;
+         }
+
+         if(tiempo % p[orden[i]] == 0){
+            cola_ready[orden[i]] = 1;
+            remaining[orden[i]] = te[orden[i]];
          }
       }
       for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
 
-         if(cola_ready[i] == 1){
-            *((output+i*mcm_r) + tiempo) = 1;//se llena la posicion [i][tiempo]
-            //output[i][tiempo] = 1;
-            remaining[i]--;
-            if(remaining[i] == 0){
-               cola_ready[i] = 0;
+         if(cola_ready[orden[i]] == 1){
+            *((output+orden[i]*mcm_r) + tiempo) = 1;//se llena la posicion [orden[i]][tiempo]
+            remaining[orden[i]]--;
+            if(remaining[orden[i]] == 0){
+               cola_ready[orden[i]] = 0;
             }
             break;
          }
       }
+      if(pos_f == tiempo && tiempo != 0){//Hubo una falla
+         tiempo = mcm_r;
+      }
       tiempo++;
    }
+   return pos_f;
 }
-void LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
+int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    int cola_ready[N_tareas];
    int remaining[N_tareas];
+   int orden[N_tareas];   
    int tiempo = 0;
    int laxity[N_tareas];
+   int pos_f = 0;//posicion donde falla
+
    //Ordenarlos por orden de prioridad laxity=p[i]-te[i]
    for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
       laxity[i]=p[i]-te[i];
+      orden[i]=i;
    }
    int aux = 0;
    for(int i = 1; i < N_tareas; i++){
       for(int j = 0; j < (N_tareas - i); ++j){
-         if(laxity[j] > laxity[j+1]){
-            aux = p[j];
-            p[j] = p[j + 1];
-            p[j + 1] = aux;
-            aux = te[j];
-            te[j] = te[j + 1];
-            te[j + 1] = aux;
-            aux = laxity[j];
-            laxity[j] = laxity[j + 1];
-            laxity[j + 1] = aux;
+         if(laxity[orden[j]] > laxity[orden[j]+1]){
+            aux = orden[j];
+            orden[j] = orden[j + 1];
+            orden[j + 1] = aux;
          }
       }
    }
-   while(tiempo != mcm_r){
+   while(tiempo < mcm_r){
       for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
-         if(tiempo % p[i] == 0){
-            cola_ready[i] = 1;
-            remaining[i] = te[i];
+         if(tiempo != 0 && tiempo % p[orden[i]] == 0 && remaining[orden[i]]>0){//Se verifica si alguna trea perdio el deadline
+            pos_f = tiempo;
+         }
+
+         if(tiempo % p[orden[i]] == 0){
+            cola_ready[orden[i]] = 1;
+            remaining[orden[i]] = te[orden[i]];
          }
       }
       for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
-         if(cola_ready[i] == 1){
-            *((output+i*mcm_r) + tiempo) = 1;//se llena la posicion [i][tiempo]
-            //output[i][tiempo] = 1;
-            remaining[i]--;
-            if(remaining[i] == 0){
-               cola_ready[i] = 0;
+         if(cola_ready[orden[i]] == 1){
+            *((output+orden[i]*mcm_r) + tiempo) = 1;//se llena la posicion [i][tiempo]
+            remaining[orden[i]]--;
+            if(remaining[orden[i]] == 0){
+               cola_ready[orden[i]] = 0;
             }
             break;
          }
+      }   
+      if(pos_f == tiempo && tiempo != 0){//Hubo una falla
+         tiempo = mcm_r;
       }
       tiempo++;
    }
+   return pos_f;
 }
 
-void EDF(int N_tareas,int *p,int *te,int mcm_r,int *output){
+int EDF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    int cola_ready[N_tareas];
    int remaining[N_tareas];
    int tiempo = 0;
    int earliest_deadline=mcm_r;
    int next = 0;
    int remain_deadline[N_tareas];
+   int pos_f = 0;//posicion donde falla
    for(int i = 0; i < N_tareas; i++){//inicializar los proximos deadlines
       remain_deadline[i] = 0;
    }
-   while(tiempo != mcm_r){
+   while(tiempo < mcm_r){
       for(int i = 0; i < N_tareas; i++){
+         if(tiempo != 0 && tiempo % p[i] == 0 && remaining[i]>0){//Se verifica si alguna trea perdio el deadline
+            pos_f = tiempo;
+         }
          if(tiempo % p[i] == 0){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola de ready
             cola_ready[i] = 1;
             remaining[i] = te[i];
             remain_deadline[i] += p[i];
-         }
-         //Se calcula el deadline para ver cual tarea sigue
-         if((remain_deadline[i] < earliest_deadline) && cola_ready[i] == 1){
-            earliest_deadline = remain_deadline[i];
-            next = i;
+            //Se calcula el deadline para ver cual tarea sigue
+            if((remain_deadline[i] <= earliest_deadline) && cola_ready[i] == 1){
+               earliest_deadline = remain_deadline[i];
+               next = i;
+            }
          }
       }
-      *((output+next*mcm_r) + tiempo) = 1;//se llena la posicion [next][tiempo]
+      *((output+next*mcm_r) + tiempo) = cola_ready[next];//se llena la posicion [next][tiempo]
       remaining[next]--;
       if(remaining[next] == 0){
          cola_ready[next] = 0;
          earliest_deadline = mcm_r;
+         for(int i = 0; i < N_tareas; i++){
+            //Se calcula el deadline para ver cual tarea sigue            
+            if((remain_deadline[i] <= earliest_deadline) && cola_ready[i] == 1){
+               earliest_deadline = remain_deadline[i];
+               next = i;
+            }
+         }
+         
+      }
+      if(pos_f == tiempo && tiempo != 0){//Hubo una falla
+         tiempo = mcm_r;
       }
       tiempo++;
    }
+   return pos_f;
+}
+void print_matr(int *output_rm,int *output_edf,int *output_llf,int N_tareas,int mcm_r,int pos_f_rm,int pos_f_edf,int pos_f_llf){
+   int largo_rm = mcm_r;
+   int largo_edf = mcm_r;
+   int largo_llf = mcm_r;
+
+   if(pos_f_rm){
+      largo_rm = pos_f_rm;
+   }
+   if(pos_f_edf){
+      largo_edf = pos_f_edf;
+   }
+   if(pos_f_llf){
+      largo_llf = pos_f_llf;
+   }
+   printf("output rm = {\n");
+   for(int i = 0; i < N_tareas; i++){
+      printf("T%d ",i);
+      for(int j = 0; j < largo_rm; j++){
+         printf("%d ",*((output_rm+i*mcm_r) + j));
+      }
+      printf("\n");
+   }
+   printf("}\n");
+   printf("output edf = {\n");
+   for(int i = 0; i < N_tareas; i++){
+      printf("T%d ",i+1);      
+      for(int j = 0; j < largo_edf; j++){
+         printf("%d ",*((output_edf+i*mcm_r) + j));
+      }
+      printf("\n");
+   }
+   printf("}\n");
+   printf("output llf = {\n");
+   for(int i = 0; i < N_tareas; i++){
+      printf("T%d ",i+1);      
+      for(int j = 0; j < largo_llf; j++){
+         printf("%d ",*((output_llf+i*mcm_r) + j));
+      }
+      printf("\n");
+   }
+   printf("}\n");   
 }
 void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    struct matrixs output;
+   int pos_f_rm = 0,pos_f_edf = 0,pos_f_llf = 0;//En caso de falla se guarda la posicion
    int mcm_r = 1;//minimo comun multiplo resultado
    for(int i = 0;i<N_tareas;i++){
       mcm_r = mcm(mcm_r,p[i]);
    }
+   printf("minimo comun multiplo es: %d\n",mcm_r);   
+   //La escala va a ser el maximo comun divisor de todos los periodos y los tiempos de ejecucion
+   int escala = mcm_r;//se usa el mcm al inicio para que no inlfuya en el maximo comun divisor 
+   for(int i = 0;i<N_tareas;i++){
+      escala = mcd(escala,p[i]);
+   }
+   for(int i = 0;i<N_tareas;i++){
+      escala = mcd(escala,te[i]);
+   }
+   //printf("escala: %d\n",escala);
+   //Ahora se divide entre la escala
+   for(int i = 0;i<N_tareas;i++){
+      p[i] = p[i]/escala;
+   }
+   for(int i = 0;i<N_tareas;i++){
+      te[i] = te[i]/escala;
+   }
+   mcm_r = mcm_r/escala;
    int output_rm[N_tareas][mcm_r];
    memset(output_rm, 0, sizeof output_rm );
    int output_edf[N_tareas][mcm_r];
@@ -161,44 +253,43 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    memset(output_llf, 0, sizeof output_llf );
 
 
-   printf("minimo comun multiplo es: %d\n",mcm_r);
-
    switch(caso){
       case 1:
-         RM(N_tareas,p,te,mcm_r,(int*)output_rm);
-         EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
-         LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
       break;
       case 2:
-         EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
-         LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
       break;
       case 3:
-         RM(N_tareas,p,te,mcm_r,(int*)output_rm);
-         EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
       break;
       case 4:
-         RM(N_tareas,p,te,mcm_r,(int*)output_rm);
-         LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
       break;
       case 5:
-         RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
       break;      
       case 6:
-         EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
       break;
       case 7:
-         LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
       break;     
    }
-   printf("output = {\n");
-   for(int i = 0; i < N_tareas; i++){
-      for(int j = 0; j < mcm_r; j++){
-         printf("%d ",output_edf[i][j]);
-      }
-      printf("\n");
-   }
-   printf("}\n");
+
+   print_matr((int*)output_rm,(int*)output_edf,(int*)output_llf,N_tareas,mcm_r,pos_f_rm,pos_f_edf,pos_f_llf);
+   //printf("posiciones de falla %d %d %d\n",pos_f_rm,pos_f_edf,pos_f_llf);
+   //create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int escala){
+   //create((int*)output_rm ,0,N_tareas,mcm_r,pos_f_rm ,escala);//RM
+   //create((int*)output_edf,1,N_tareas,mcm_r,pos_f_edf,escala);//EDF
+   //create((int*)output_llf,2,N_tareas,mcm_r,pos_f_llf,escala);//
+
+
 
    //gtk_main_quit();
 }
