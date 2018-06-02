@@ -61,7 +61,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
    for(k=0;k<it;k++) {
 
       fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %d %s %s %s", "\\frametitle{Tabla ", k+1, show_mode, "}", "\n");
+      fprintf(fp_edit, "%s %s %s %s", "\\frametitle{", show_mode, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
 
@@ -89,8 +89,9 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       }
       
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
-      fprintf(fp_edit, "%s %s %s %s", "\\caption{", show_mode, "}", "\n");
+      fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
+      fprintf(fp_edit, "%s %d %s", "Escala Bloque : Ciclos = 1 :", escala, "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
 
    }
