@@ -256,33 +256,40 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    int output_llf[N_tareas][mcm_r];
    memset(output_llf, 0, sizeof output_llf );
 
-
+   int create_mode;
    switch(caso){
       case 1:
          pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
          pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
          pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
       break;
       case 2:
          pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
          pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
       break;
       case 3:
          pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
          pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         create_mode = caso;
       break;
       case 4:
          pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
          pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
       break;
       case 5:
          pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         create_mode = caso;
       break;      
       case 6:
          pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         create_mode = caso;
       break;
       case 7:
          pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
       break;     
    }
 
@@ -290,9 +297,15 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    //printf("posiciones de falla %d %d %d\n",pos_f_rm,pos_f_edf,pos_f_llf);
    //create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int escala){
    clean();
-   create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
-   create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
-   create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
+   if(create_mode == 1 || create_mode == 3 || create_mode == 4 || create_mode == 5){
+      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
+   } 
+   if(create_mode == 1 || create_mode == 2 || create_mode == 3 || create_mode == 6){
+      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
+   } 
+   if(create_mode == 1 || create_mode == 2 || create_mode == 4 || create_mode == 7){
+      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
+   }
    join();
    system("pdflatex final.tex");
    system("evince final.pdf");
