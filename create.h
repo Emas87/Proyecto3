@@ -97,7 +97,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %s", "\\hline", "\n");
 
       //Status
-      fprintf(fp_edit, "%s", "Status ");
+      fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
       }
