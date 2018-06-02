@@ -8,21 +8,6 @@
 
 void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
 
-/*   int tasks[6][64] = {{1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
-                       {0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0},
-                       {0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0},
-                       {0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0},
-                       {0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0},
-                       {0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1}};
-
-   int tasks[6][9] = {{1,0,0,0,0,0,0,0,1},
-                      {0,1,1,0,0,0,0,0,0},
-                      {0,0,0,1,0,0,0,0,0},
-                      {0,0,0,0,1,0,0,0,0},
-                      {0,0,0,0,0,1,1,0,0},
-                      {0,0,0,0,0,0,0,1,0}};
-*/
-
    const char *task_name[6];
    task_name[0] = "T1 ";
    task_name[1] = "T2 ";
@@ -55,47 +40,20 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
    FILE *fp_edit = fopen(file, "w");
 
-/*   if (fp_edit == NULL)
-   {
-         puts("Could not open files");
-         exit(0);
-   }
-*/
    int i,j,k,it,resto;
-//   size_t tasks_s = sizeof(tasks[0])/sizeof(tasks[0][0]);
-//   size_t tasks_a = sizeof(tasks)/sizeof(tasks[0]);
    int filas,columnas[512];
 
    if(mcm_r>24){
-
       it = mcm_r/24 + 1;
       resto = mcm_r%24;
-
       filas = N_tareas;
-
       for(i=1;i<it;i++){
          columnas[i] = 24;  
       }
-      
       columnas[it] = resto;
-
-/*
-      it = tasks_s/24 + 1;
-      resto = tasks_s%24;
-
-      filas = tasks_a;
-
-      for(i=1;i<it;i++){
-         columnas[i] = 24;  
-      }
-      
-      columnas[it] = resto; 
-*/     
    }
    else if(mcm_r<=24){
       it = 1;
-//      filas = tasks_a;
-//      columnas[it] = tasks_s;
       filas = N_tareas;
       columnas[it] = mcm_r;
    }
@@ -130,21 +88,6 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
          fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
       }
       
-
-/*
-      for(i=0;i<filas;i++){
-         fprintf(fp_edit, "%s", task_name[i]);
-         for(j=0;j<columnas[k+1];j++){
-            if(tasks[i][j]==0){
-               fprintf(fp_edit, "%s", "& ");
-            } 
-            else if(tasks[i][j]==1){
-               fprintf(fp_edit, "%s", task_color[i]);
-            }
-         }
-         fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
-      }
-*/
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
       fprintf(fp_edit, "%s %s", show_mode, "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");

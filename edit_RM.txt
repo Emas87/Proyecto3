@@ -7,6 +7,7 @@
 T1 & \cellcolor{blue} & & & & & & & & & \\ \hline 
 T2 & & \cellcolor{red} & \cellcolor{red} & & & & & & & \\ \hline 
 T3 & & & & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & & & & \\ \hline 
+T4 & & & & & & & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} \\ \hline 
 \end{tabular} 
 \caption{Rate Monotonic} 
 \end{table} 

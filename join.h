@@ -14,12 +14,6 @@ void join(){
    FILE *fp_final = fopen("final.tex", "w");
    char c;
  
-/*   if (fp_begin == NULL || fp_edit == NULL || fp_end == NULL || fp_final == NULL)
-   {
-         puts("Could not open files");
-         exit(0);
-   }*/
- 
    // Copy contents of first file to .tex file
    while ((c = fgetc(fp_begin)) != EOF)
       fputc(c, fp_final);
