@@ -18,8 +18,8 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
    const char *task_color[6];
    task_color[0] = "& \\cellcolor{blue} ";
-   task_color[1] = "& \\cellcolor{red} ";
-   task_color[2] = "& \\cellcolor{green} ";
+   task_color[1] = "& \\cellcolor{purple} ";
+   task_color[2] = "& \\cellcolor{cyan} ";
    task_color[3] = "& \\cellcolor{gray} ";
    task_color[4] = "& \\cellcolor{yellow} ";
    task_color[5] = "& \\cellcolor{orange} ";
@@ -53,7 +53,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
          }
          columnas[it] = resto;
       } else {
-         if(pos_fall>=mcm_r){
+         if(pos_fall>24){
             it = pos_fall/24 + 1;
             resto = pos_fall%24;
             for(i=1;i<it;i++){
@@ -99,7 +99,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       //Status
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
-         if(j==(columnas[k+1]-1)){
+         if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
             fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
          } else {
             fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
