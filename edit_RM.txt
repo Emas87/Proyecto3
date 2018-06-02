@@ -11,4 +11,4 @@ T3 & & \cellcolor{green} & \cellcolor{green} & & \cellcolor{green} & \cellcolor{
 \end{tabular} 
 \caption{ Rate Monotonic 1 } 
 \end{table} 
-Escala Bloque : Ciclos = 1 : 10 \\Posicion Fallo:  5 \\mcm:  105 \\\end{frame} 
+Escala Bloque : Ciclos = 1 : 1 \\Posicion Fallo:  5 \\mcm:  60 \\\end{frame} 
