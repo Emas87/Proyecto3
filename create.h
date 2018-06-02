@@ -44,18 +44,39 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
    int filas,columnas[512];
 
    if(mcm_r>24){
-      it = mcm_r/24 + 1;
-      resto = mcm_r%24;
-      filas = N_tareas;
-      for(i=1;i<it;i++){
-         columnas[i] = 24;  
+
+      if(pos_fall==0){
+         it = mcm_r/24 + 1;
+         resto = mcm_r%24;
+         for(i=1;i<it;i++){
+            columnas[i] = 24;
+         }
+         columnas[it] = resto;
+      } else {
+         if(pos_fall>=mcm_r){
+            it = pos_fall/24 + 1;
+            resto = pos_fall%24;
+            for(i=1;i<it;i++){
+               columnas[i] = 24;
+            }
+            columnas[it] = resto;
+         } else {
+            it = 1;
+            columnas[it] = pos_fall;
+         }
       }
-      columnas[it] = resto;
+
+      filas = N_tareas;
+
    }
    else if(mcm_r<=24){
       it = 1;
       filas = N_tareas;
-      columnas[it] = mcm_r;
+      if(pos_fall==0){
+         columnas[it] = mcm_r;
+      } else {
+         columnas[it] = pos_fall;
+      }
    }
 
    for(k=0;k<it;k++) {
@@ -75,6 +96,14 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
       fprintf(fp_edit, "%s %s", "\\hline", "\n");
 
+      //Status
+      fprintf(fp_edit, "%s", "Status ");
+      for(j=0;j<columnas[k+1];j++){
+         fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
+      }
+      fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
+
+      //Tasks
       for(i=0;i<filas;i++){
          fprintf(fp_edit, "%s", task_name[i]);
          for(j=0;j<columnas[k+1];j++){
