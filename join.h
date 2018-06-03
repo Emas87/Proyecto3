@@ -34,8 +34,6 @@ void join(){
    while ((c = fgetc(fp_end)) != EOF)
       fputc(c, fp_final);
  
-   printf("Merged file1.txt and file2.txt into final.tex");
- 
    fclose(fp_begin);
    fclose(fp_edit_RM);
    fclose(fp_edit_EDF);

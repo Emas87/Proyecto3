@@ -1,4 +1,12 @@
+%------------------------------------------------
+
+\section{Least Laxity First}
+
+\subsection{Algoritmo LLF}
+
 \begin{frame} 
-\frametitle{ Least Laxity First } 
+\frametitle{Least Laxity First} 
 Explicacion Basica de LLF \\
-\end{frame} 
+\end{frame}
+
+%------------------------------------------------

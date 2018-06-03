@@ -1,4 +1,12 @@
+%------------------------------------------------
+
+\section{Earliest Dead First}
+
+\subsection{Algoritmo EDF}
+
 \begin{frame} 
-\frametitle{ Earliest Dead First } 
+\frametitle{Earliest Dead First} 
 Explicacion Basica de EDF \\
-\end{frame} 
+\end{frame}
+
+%------------------------------------------------

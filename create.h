@@ -64,28 +64,40 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
    if(mcm_r>24){
 
       if(pos_fall==0){
-         it = mcm_r/24 + 1;
          resto = mcm_r%24;
-         for(i=1;i<it;i++){
-            columnas[i] = 24;
-         }
-         columnas[it] = resto;
-      } else {
-         if(pos_fall>24){
-            it = pos_fall/24 + 1;
-            resto = pos_fall%24;
+         if(resto==0){
+            it = mcm_r/24;
+            for(i=1;i<=it;i++){
+               columnas[i] = 24;
+            }
+         } else {
+            it = mcm_r/24 + 1;
             for(i=1;i<it;i++){
                columnas[i] = 24;
             }
-            columnas[it] = resto+1;
+            columnas[it] = resto;
+         }
+      } else {
+         if(pos_fall>24){
+            resto = pos_fall%24;
+            if(resto==0){
+               it = pos_fall/24;
+               for(i=1;i<=it;i++){
+                  columnas[i] = 24;
+               }
+            } else {
+               it = pos_fall/24 + 1;
+               for(i=1;i<it;i++){
+                  columnas[i] = 24;
+               }
+               columnas[it] = resto+1;
+            }
          } else {
             it = 1;
             columnas[it] = pos_fall+1;
          }
       }
-
       filas = N_tareas;
-
    }
    else if(mcm_r<=24){
       it = 1;
@@ -97,8 +109,11 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       }
    }
 
+   fprintf(fp_edit, "%s %s %s %s", "\\subsection{Tabla de Tiempo ", show_mode ,"}", "\n");
+
    for(k=0;k<it;k++) {
 
+      fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
       fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
       fprintf(fp_edit, "%s %s %s %s", "\\frametitle{", show_mode, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
@@ -146,6 +161,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
       fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
 
    }
 

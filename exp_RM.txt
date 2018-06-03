@@ -1,4 +1,12 @@
+%------------------------------------------------
+
+\section{Rate Monotonic}
+
+\subsection{Algoritmo RM}
+
 \begin{frame} 
-\frametitle{ Rate Monotonic } 
+\frametitle{Rate Monotonic} 
 Explicacion Basica de RM \\
-\end{frame} 
+\end{frame}
+
+%------------------------------------------------
