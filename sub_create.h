@@ -28,35 +28,17 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
    char show_mode[512];
 
    if(modo==0){
-      strcpy(file,"edit_RM.txt");
+      strcpy(file,"FULL_edit_RM.txt");
       strcpy(show_mode,"Rate Monotonic");
    } else if(modo==1){
-      strcpy(file,"edit_EDF.txt");
+      strcpy(file,"FULL_edit_EDF.txt");
       strcpy(show_mode,"Earliest Dead First");
    } else if(modo==2){
-      strcpy(file,"edit_LLF.txt");
+      strcpy(file,"FULL_edit_LLF.txt");
       strcpy(show_mode,"Least Laxity First");
    }
 
    FILE *fp_edit = fopen(file, "w");
-   char c;
-
-   if(modo==0){
-      FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
-      while ((c = fgetc(fp_exp_RM)) != EOF)
-         fputc(c, fp_edit);
-      fclose(fp_exp_RM);
-   } else if(modo==1){
-      FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
-      while ((c = fgetc(fp_exp_EDF)) != EOF)
-         fputc(c, fp_edit);
-      fclose(fp_exp_EDF);
-   } else if(modo==2){
-      FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
-      while ((c = fgetc(fp_exp_LLF)) != EOF)
-         fputc(c, fp_edit);
-      fclose(fp_exp_LLF);
-   }
 
    int i,j,k,it,resto;
    int filas,columnas[512];
@@ -109,15 +91,13 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       }
    }
 
-   fprintf(fp_edit, "%s %s %s %s", "\\subsection{Tabla de Tiempo ", show_mode ,"}", "\n");
+   
 
    for(k=0;k<it;k++) {
 
-      fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
-      fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s %s %s", "\\frametitle{Tabla de Tiempo ", show_mode ,"}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
+      fprintf(fp_edit, "%s %s", "\\resizebox{.15\\columnwidth}{!}{", "\n");
 
       char str[512];
       strcpy(str,"\\begin{tabular}{|l|");
@@ -155,13 +135,10 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       }
       
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
+      fprintf(fp_edit, "%s %s", "}", "\n");
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
-      fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
-      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
 
    }
 
