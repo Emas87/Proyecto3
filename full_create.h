@@ -7,7 +7,9 @@
 //modo 10 RM-EDF
 //modo 11 RM-LLF
 
-void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
+void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall_rm, int pos_fall_edf, int pos_fall_llf, int escala){
+//ERROR CORREGIR
+   int pos_fall = pos_fall_rm;
 
    const char *task_name[6];
    task_name[0] = "T1 ";
@@ -158,6 +160,9 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
       }
    }
 
+
+
+
    for(k=0;k<it;k++) {
 
    fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
@@ -166,89 +171,122 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
    fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
    
 
-   for(l=0;l<casos;l++){
-       int *tasks;
-       if(modo==8){
-          if(l==0){
-             tasks = (int*)tasks_rm;
-          } else if(l==1){
-             tasks = (int*)tasks_edf;
-          } else if(l==2){
-             tasks = (int*)tasks_llf;
+      for(l=0;l<casos;l++){
+          int *tasks;
+          if(modo==8){
+             if(l==0){
+                tasks = (int*)tasks_rm;
+             } else if(l==1){
+                tasks = (int*)tasks_edf;
+             } else if(l==2){
+                tasks = (int*)tasks_llf;
+             }
+          } else if(modo==9){
+             if(l==0){
+                tasks = (int*)tasks_edf;
+             } else if(l==1){
+                tasks = (int*)tasks_llf;
+             }
+          } else if(modo==10){
+             if(l==0){
+                tasks = (int*)tasks_rm;
+             } else if(l==1){
+                tasks = (int*)tasks_edf;
+             }
+          } else if(modo==11){
+             if(l==0){
+                tasks = (int*)tasks_rm;
+             } else if(l==1){
+                tasks = (int*)tasks_llf;
+             } 
           }
-       } else if(modo==9){
-          if(l==0){
-             tasks = (int*)tasks_edf;
-          } else if(l==1){
-             tasks = (int*)tasks_llf;
-          }
-       } else if(modo==10){
-          if(l==0){
-             tasks = (int*)tasks_rm;
-          } else if(l==1){
-             tasks = (int*)tasks_edf;
-          }
-       } else if(modo==11){
-          if(l==0){
-             tasks = (int*)tasks_rm;
-          } else if(l==1){
-             tasks = (int*)tasks_llf;
-          }
-       }
  
-      fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
-      fprintf(fp_edit, "%s %s", "\\centering", "\n");
-      fprintf(fp_edit, "%s %s", "\\resizebox{.15\\columnwidth}{!}{", "\n");
+         fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
+         fprintf(fp_edit, "%s %s", "\\centering", "\n");
+         fprintf(fp_edit, "%s %s", "\\resizebox{.15\\columnwidth}{!}{", "\n");
 
-      char str[512];
-      strcpy(str,"\\begin{tabular}{|l|");
-      for(i=0;i<columnas[k+1];i++){
-         strcat(str,"l|");
-      }
-      strcat(str,"}");
-      fprintf(fp_edit, "%s %s", str, "\n");
-
-      fprintf(fp_edit, "%s %s", "\\hline", "\n");
-
-      //Status
-      fprintf(fp_edit, "%s", "St ");
-      for(j=0;j<columnas[k+1];j++){
-         if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-            fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
-         } else {
-            fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
+         char str[512];
+         strcpy(str,"\\begin{tabular}{|l|");
+         for(i=0;i<columnas[k+1];i++){
+            strcat(str,"l|");
          }
-      }
-      fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
+         strcat(str,"}");
+         fprintf(fp_edit, "%s %s", str, "\n");
 
-      //Tasks
-      for(i=0;i<filas;i++){
-         fprintf(fp_edit, "%s", task_name[i]);
+         fprintf(fp_edit, "%s %s", "\\hline", "\n");
+  
+         //Status
+         fprintf(fp_edit, "%s", "St ");
          for(j=0;j<columnas[k+1];j++){
-            if(*((tasks+i*mcm_r) + j+(k*24))==0){
-               fprintf(fp_edit, "%s", "& ");
-            } 
-            else if(*((tasks+i*mcm_r) + j+(k*24))==1){
-               fprintf(fp_edit, "%s", task_color[i]);
+            if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
+               fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
+            } else {
+               fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
             }
          }
          fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
-      }
-      
-      fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
-      fprintf(fp_edit, "%s %s", "}", "\n");
-      fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode[l], k+1, "}", "\n");
-      fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
-//      fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
-//      fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
-//      fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
 
+         //Tasks
+         for(i=0;i<filas;i++){
+            fprintf(fp_edit, "%s", task_name[i]);
+            for(j=0;j<columnas[k+1];j++){
+               if(*((tasks+i*mcm_r) + j+(k*24))==0){
+                  fprintf(fp_edit, "%s", "& ");
+               } 
+               else if(*((tasks+i*mcm_r) + j+(k*24))==1){
+                  fprintf(fp_edit, "%s", task_color[i]);
+               }
+            }
+            fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
+         }
+      
+         fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
+         fprintf(fp_edit, "%s %s", "}", "\n");
+         fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode[l], k+1, "}", "\n");
+         fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
+
+      }
+
+      fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
+   }
+
+   fprintf(fp_edit, "%s %s", "\\subsection{Informacion de Tabla de Tiempo Completa}", "\n");
+   fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
+   fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
+   fprintf(fp_edit, "%s %s", "\\frametitle{Informacion de Tabla de Tiempo Completa}", "\n");
+
+   if(modo==8 || modo==10 || modo==11){ //RM
+      fprintf(fp_edit, "%s %s", "Informacion de Rate Monotonic:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_rm, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item mcm: ", mcm_r, "\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
+
+   } 
+   if(modo==8 || modo==9 || modo==10){ //EDF
+      fprintf(fp_edit, "%s %s", "Informacion de Earliest Dead First:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_edf, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item mcm: ", mcm_r, "\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
+
+   }
+   if(modo==8 || modo==9 || modo==11){ //LLF
+      fprintf(fp_edit, "%s %s", "Informacion de Least Laxity First:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_llf, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item mcm: ", mcm_r, "\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
    }
 
    fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
    fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
 
-   }
 
    fclose(fp_edit);
 
