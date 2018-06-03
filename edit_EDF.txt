@@ -5,7 +5,7 @@
 \subsection{Algoritmo EDF}
 
 \begin{frame} 
-\frametitle{Earliest Dead First} 
+\frametitle{Algoritmo Earliest Dead First (EDF)} 
 Explicacion Basica de EDF \\
 \end{frame}
 
@@ -14,7 +14,7 @@ Explicacion Basica de EDF \\
 
 %------------------------------------------------
 \begin{frame} 
-\frametitle{ Earliest Dead First } 
+\frametitle{Tabla de Tiempo  Earliest Dead First } 
 \begin{table} 
 \centering 
 \begin{tabular}{|l|l|l|l|l|l|l|} 

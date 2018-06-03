@@ -5,7 +5,7 @@
 \subsection{Algoritmo EDF}
 
 \begin{frame} 
-\frametitle{Earliest Dead First} 
+\frametitle{Algoritmo Earliest Dead First (EDF)} 
 Explicacion Basica de EDF \\
 \end{frame}
 

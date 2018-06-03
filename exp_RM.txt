@@ -5,7 +5,7 @@
 \subsection{Algoritmo RM}
 
 \begin{frame} 
-\frametitle{Rate Monotonic} 
+\frametitle{Algoritmo Rate Monotonic (RM)} 
 Explicacion Basica de RM \\
 \end{frame}
 

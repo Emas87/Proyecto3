@@ -115,7 +115,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
       fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
       fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s %s %s", "\\frametitle{", show_mode, "}", "\n");
+      fprintf(fp_edit, "%s %s %s %s", "\\frametitle{Tabla de Tiempo ", show_mode ,"}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
 

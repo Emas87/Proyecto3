@@ -5,7 +5,7 @@
 \subsection{Algoritmo LLF}
 
 \begin{frame} 
-\frametitle{Least Laxity First} 
+\frametitle{Algoritmo Least Laxity First (LLF)} 
 Explicacion Basica de LLF \\
 \end{frame}
 
