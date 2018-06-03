@@ -50,7 +50,9 @@ void Compute(gpointer context_object){
       caso = 6;//Solo EDF
    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
       caso = 7;//Solo LLF
-   }   CrearMatriz(caso,N_tareas,p,te);
+   }   
+   CrearMatriz(caso,N_tareas,p,te);
+   gtk_main_quit();
 }
 void prev_window_A(GtkWidget *widget, gpointer context_object ){
    GtkWidget *prev = g_object_get_data (context_object, "window2");
@@ -98,7 +100,7 @@ void Algoritmos( gpointer context_object){
 	gtk_widget_realize (window3);
    //g_object_set_data (context_object, "prev", win_prev);
    //g_object_set_data (context_object, "curr", window3 );
-	//g_signal_connect (window3, "destroy", gtk_main_quit , NULL);
+	g_signal_connect (window3, "destroy", gtk_main_quit , NULL);
 
    // Create a box with buttons
 	box = gtk_box_new (TRUE, 6);
@@ -129,7 +131,7 @@ void Algoritmos( gpointer context_object){
    g_object_set_data (context_object, "label_a",label_a);
 	g_signal_connect (G_OBJECT (b_finish), "clicked", G_CALLBACK (test_a), context_object );
 	gtk_box_pack_start (GTK_BOX (box), label_a, TRUE,TRUE , 10);      
-	gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, TRUE, 10);
+	//gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, TRUE, 10);
 	gtk_box_pack_start (GTK_BOX (box), b_finish, TRUE,TRUE , 10);
 	gtk_widget_show_all (window3);
 }
@@ -215,7 +217,7 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
 	gtk_window_set_title (GTK_WINDOW (window2), "Tiempo de Ejecucion y Periodo");
 	gtk_window_set_position (GTK_WINDOW (window2), GTK_WIN_POS_CENTER);   
 	gtk_widget_realize (window2);
-	//g_signal_connect (window2, "destroy", gtk_main_quit , NULL);
+	g_signal_connect (window2, "destroy", gtk_main_quit , NULL);
 
    // Create a box with buttons
 	box = gtk_box_new (TRUE, 1);
@@ -260,7 +262,7 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
 	g_signal_connect (G_OBJECT (b_next), "clicked", G_CALLBACK (test_e), context_object );
 	gtk_box_pack_start (GTK_BOX (box), label_correctitud , TRUE, TRUE, 10);
    gtk_box_pack_start (GTK_BOX (box), b_next, TRUE, TRUE , 10);
-	gtk_box_pack_start (GTK_BOX (box), b_prev,TRUE , TRUE, 10);
+	//gtk_box_pack_start (GTK_BOX (box), b_prev,TRUE , TRUE, 10);
 
 
 	gtk_widget_show_all (window2);
