@@ -6,10 +6,7 @@
 
 void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall_rm, int pos_fall_edf, int pos_fall_llf, int escala, int *te, int *p, double miu, double Un){
 
-   char file[512];
-
-   strcpy(file,"edit_FULL.txt");
-   FILE *fp_edit = fopen(file, "w");
+   FILE *fp_edit = fopen("files/edit_FULL.txt", "w");
    char c;
 
    if(modo==8){
@@ -18,12 +15,12 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       ecuacion(1,N_tareas,te,p,miu,Un);//EDF
       ecuacion(2,N_tareas,te,p,miu,Un);//LLF
 
-      FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
-      FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
-      FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
-      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
-      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
-      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
+      FILE *fp_exp_RM = fopen("files/exp_RM.txt", "r");
+      FILE *fp_exp_EDF = fopen("files/exp_EDF.txt", "r");
+      FILE *fp_exp_LLF = fopen("files/exp_LLF.txt", "r");
+      FILE *fp_ec_RM = fopen("files/ec_RM.txt", "r");
+      FILE *fp_ec_EDF = fopen("files/ec_EDF.txt", "r");
+      FILE *fp_ec_LLF = fopen("files/ec_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
@@ -54,9 +51,9 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala);//EDF
       sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala);//LLF
 
-      FILE *fp_FULL_edit_RM = fopen("FULL_edit_RM.txt", "r");
-      FILE *fp_FULL_edit_EDF = fopen("FULL_edit_EDF.txt", "r");
-      FILE *fp_FULL_edit_LLF = fopen("FULL_edit_LLF.txt", "r");
+      FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
+      FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
+      FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
@@ -73,10 +70,10 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       ecuacion(1,N_tareas,te,p,miu,Un);//EDF
       ecuacion(2,N_tareas,te,p,miu,Un);//LLF
 
-      FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
-      FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
-      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
-      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
+      FILE *fp_exp_EDF = fopen("files/exp_EDF.txt", "r");
+      FILE *fp_exp_LLF = fopen("files/exp_LLF.txt", "r");
+      FILE *fp_ec_EDF = fopen("files/ec_EDF.txt", "r");
+      FILE *fp_ec_LLF = fopen("files/ec_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_EDF)) != EOF)
          fputc(c, fp_edit);
@@ -100,8 +97,8 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala);//EDF
       sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala);//LLF
 
-      FILE *fp_FULL_edit_EDF = fopen("FULL_edit_EDF.txt", "r");
-      FILE *fp_FULL_edit_LLF = fopen("FULL_edit_LLF.txt", "r");
+      FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
+      FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_EDF)) != EOF)
          fputc(c, fp_edit);
@@ -117,10 +114,10 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       ecuacion(0,N_tareas,te,p,miu,Un);//RM
       ecuacion(1,N_tareas,te,p,miu,Un);//EDF
 
-      FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
-      FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
-      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
-      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
+      FILE *fp_exp_RM = fopen("files/exp_RM.txt", "r");
+      FILE *fp_exp_EDF = fopen("files/exp_EDF.txt", "r");
+      FILE *fp_ec_RM = fopen("files/ec_RM.txt", "r");
+      FILE *fp_ec_EDF = fopen("files/ec_EDF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
@@ -144,8 +141,8 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala);//RM
       sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala);//EDF
 
-      FILE *fp_FULL_edit_RM = fopen("FULL_edit_RM.txt", "r");
-      FILE *fp_FULL_edit_EDF = fopen("FULL_edit_EDF.txt", "r");
+      FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
+      FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
@@ -160,10 +157,10 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       ecuacion(0,N_tareas,te,p,miu,Un);//RM
       ecuacion(2,N_tareas,te,p,miu,Un);//LLF
 
-      FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
-      FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
-      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
-      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
+      FILE *fp_exp_RM = fopen("files/exp_RM.txt", "r");
+      FILE *fp_exp_LLF = fopen("files/exp_LLF.txt", "r");
+      FILE *fp_ec_RM = fopen("files/ec_RM.txt", "r");
+      FILE *fp_ec_LLF = fopen("files/ec_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
@@ -187,8 +184,8 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala);//RM
       sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala);//LLF
 
-      FILE *fp_FULL_edit_RM = fopen("FULL_edit_RM.txt", "r");
-      FILE *fp_FULL_edit_LLF = fopen("FULL_edit_LLF.txt", "r");
+      FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
+      FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);

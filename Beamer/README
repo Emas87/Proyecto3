@@ -1,3 +1,0 @@
-sudo apt-get install latex-beamer
-pdflatex slides.tex
-rm *.aux *.log *.nav *.out *.pdf *.snm *.toc *.vrb

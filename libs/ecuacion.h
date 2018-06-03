@@ -16,23 +16,21 @@ void ecuacion(int modo, int N_tareas, int *te, int *p, double miu, double Un){
    task_name[4] = "T5 ";
    task_name[5] = "T6 ";
 
-   char file[512];
    char show_mode[512];
+   FILE *fp_edit;
 
    if(modo==0){
-      strcpy(file,"ec_RM.txt");
+      fp_edit = fopen("files/ec_RM.txt", "w");
       strcpy(show_mode,"Rate Monotonic");
    } else if(modo==1){
-      strcpy(file,"ec_EDF.txt");
+      fp_edit = fopen("files/ec_EDF.txt", "w");
       strcpy(show_mode,"Earliest Dead First");
    } else if(modo==2){
-      strcpy(file,"ec_LLF.txt");
+      fp_edit = fopen("files/ec_LLF.txt", "w");
       strcpy(show_mode,"Least Laxity First");
    }
 
-   FILE *fp_edit = fopen(file, "w");
    char c;
-
    int i,j;
    int filas,columnas[512];
 
