@@ -345,9 +345,11 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    }
 
    join();
-   system("pdflatex final.tex");
-   system("evince final.pdf");
-   system("rm *.aux *.log *.nav *.out *.snm *.toc *.vrb");
+   FILE *in=NULL;
+   
+   system("pdflatex final.tex > temp.o");
+   system("evince final.pdf > temp.o");   
+   system("rm *.aux *.log *.nav *.out *.snm *.toc *.vrb > temp.o");      
 
    //gtk_main_quit();
 }
