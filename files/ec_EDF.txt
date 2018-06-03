@@ -7,15 +7,16 @@
 \centering 
 \begin{tabular}{|l|l|l|} 
 \hline 
-Tareas & Periodo & T. Ejecucion \\ \hline 
-T1   & 6  &  1\\ \hline 
-T2   & 9  &  1\\ \hline 
-T3   & 8  &  1\\ \hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 3  &  1\\ \hline 
+T2   & 3  &  1\\ \hline 
+T3   & 3  &  1\\ \hline 
 \end{tabular} 
 \caption{Datos  Earliest Dead First } 
 \end{table} 
-Mu =  0,402778 \\ 
-U(n) =  0,779763 \\ 
+Condicion: $\mu \leq 1$ \\ 
+$\mu =  1,000000 $ \\ 
+Dado que $\mu \leq 1$ el algoritmo indica que las tareas si son schedulable \\ 
 \end{frame} 
 
 %------------------------------------------------

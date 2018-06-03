@@ -175,7 +175,11 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
       fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      if(pos_fall==0){
+         fprintf(fp_edit, "%s %s %s", "Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      }
       fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
       fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");

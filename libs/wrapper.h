@@ -315,22 +315,33 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
    if(modo==8 || modo==10 || modo==11){ //RM
       fprintf(fp_edit, "%s %s", "Informacion de Rate Monotonic:\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_rm, "\\\\", "\n");
+      if(pos_fall_rm==0){
+         fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_rm, "\\\\", "\n");
+      }
       fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
 
    } 
    if(modo==8 || modo==9 || modo==10){ //EDF
       fprintf(fp_edit, "%s %s", "Informacion de Earliest Dead First:\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
-
-      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_edf, "\\\\", "\n");
+      if(pos_fall_edf==0){
+         fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_edf, "\\\\", "\n");
+      }
       fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
 
    }
    if(modo==8 || modo==9 || modo==11){ //LLF
       fprintf(fp_edit, "%s %s", "Informacion de Least Laxity First:\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_llf, "\\\\", "\n");
+      if(pos_fall_llf==0){
+         fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_llf, "\\\\", "\n");
+      }
       fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
    }
 

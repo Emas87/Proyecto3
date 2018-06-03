@@ -1,0 +1,57 @@
+%------------------------------------------------
+
+\section{Rate Monotonic}
+
+\subsection{Algoritmo RM}
+
+\begin{frame} 
+\frametitle{Algoritmo Rate Monotonic (RM)} 
+Explicacion Basica de RM \\
+\end{frame}
+
+%------------------------------------------------
+\subsection{Tests de Schedulability  Rate Monotonic } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Rate Monotonic } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 3  &  1\\ \hline 
+T2   & 3  &  1\\ \hline 
+T3   & 3  &  1\\ \hline 
+\end{tabular} 
+\caption{Datos  Rate Monotonic } 
+\end{table} 
+Condicion: $\mu \leq U(n)$ \\ 
+$\mu =  1,000000 $ \\ 
+$U(n) =  0,779763 $ \\ 
+Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\ 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo  Rate Monotonic } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo  Rate Monotonic } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|l|} 
+\hline 
+St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & & \\ \hline 
+T2 & & \cellcolor{purple} & \\ \hline 
+T3 & & & \cellcolor{cyan} \\ \hline 
+\end{tabular} 
+\caption{ Rate Monotonic 1 } 
+\end{table} 
+Escala Bloque : Ciclos = 1 : 1 \\ 
+Posicion Fallo: No hay ningun fallo \\ 
+mcm:  3 \\ 
+\end{frame} 
+
+%------------------------------------------------
