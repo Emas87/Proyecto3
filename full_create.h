@@ -239,9 +239,6 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
       fprintf(fp_edit, "%s %s", "}", "\n");
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode[l], k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
-//      fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
-//      fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
-//      fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
 
    }
 
@@ -249,6 +246,42 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
    fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
 
    }
+
+   fprintf(fp_edit, "%s %s", "\\subsection{Informacion de Tabla de Tiempo Completa}", "\n");
+   fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
+   fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
+   fprintf(fp_edit, "%s %s", "\\frametitle{Informacion de Tabla de Tiempo Completa}", "\n");
+
+      if(modo==8 || modo==10 || modo==11){ //RM
+      fprintf(fp_edit, "%s %s", "Informacion de Rate Monotonic:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item mcm: ", mcm_r, "\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
+
+   } 
+   if(modo==8 || modo==9 || modo==10){ //EDF
+      fprintf(fp_edit, "%s %s", "Informacion de Earliest Dead First:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item mcm: ", mcm_r, "\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
+
+   }
+   if(modo==8 || modo==9 || modo==11){ //LLF
+      fprintf(fp_edit, "%s %s", "Informacion de Least Laxity First:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      fprintf(fp_edit, "%s %d %s %s", "\\item mcm: ", mcm_r, "\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
+   }
+
+   fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+   fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
 
    fclose(fp_edit);
 
