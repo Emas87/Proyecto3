@@ -4,6 +4,7 @@
 #include <string.h>
 #include <math.h>
 #include "create.h"
+#include "full_create.h"
 #include "join.h"
 #include "clean.h"
 
@@ -326,22 +327,8 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    if(create_mode == 1 || create_mode == 2 || create_mode == 4 || create_mode == 7){
       create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
    }
-   if(create_mode == 8){//Mismo slide
-      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
-      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
-      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
-   } 
-   if(create_mode == 9){
-      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
-      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF      
-   } 
-   if(create_mode == 10){
-      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
-      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
-   }
-   if(create_mode == 11){
-      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM      
-      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
+   if(create_mode >= 8){//Mismo slide
+      full_create((int*)output_rm, (int*)output_edf, (int*)output_llf, create_mode, N_tareas, mcm_r, pos_f_rm, escala);//RM
    }
 
    join();

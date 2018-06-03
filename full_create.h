@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-//modo 0 RM-EDF-LLF
-//modo 1 EDF-LLF
-//modo 2 RM-EDF
-//modo 3 RM-LLF
+//modo 8 RM-EDF-LLF
+//modo 9 EDF-LLF
+//modo 10 RM-EDF
+//modo 11 RM-LLF
 
 void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
 
@@ -27,14 +27,13 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
 
    char file[512];
    const char *show_mode[3];
-   int *tasks_mode[3];
 
    strcpy(file,"edit_FULL.txt");
    FILE *fp_edit = fopen(file, "w");
    char c;
    int casos;
 
-   if(modo==0){
+   if(modo==8){
 
       FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
@@ -56,11 +55,7 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
       show_mode[1]="Earliest Dead First";
       show_mode[2]="Least Laxity First";
 
-      *tasks_mode[0] = *tasks_rm;
-      *tasks_mode[1] = *tasks_edf;
-      *tasks_mode[2] = *tasks_llf;
-
-   } else if(modo==1){
+   } else if(modo==9){
 
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
       FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
@@ -74,14 +69,10 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
       fclose(fp_exp_LLF);
 
       casos = 2;
-      show_mode[0]="EDF";
-      show_mode[1]="LLF";
+      show_mode[0]="Earliest Dead First";
+      show_mode[1]="Least Laxity First";
 
-      *tasks_mode[0] = *tasks_edf;
-      *tasks_mode[1] = *tasks_llf;
-
-
-   } else if(modo==2){
+   } else if(modo==10){
 
       FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
@@ -95,14 +86,10 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
       fclose(fp_exp_EDF);
 
       casos = 2;
-      show_mode[0]="RM";
-      show_mode[1]="EDF";
+      show_mode[0]="Rate Monotonic";
+      show_mode[1]="Earliest Dead First";
 
-      *tasks_mode[0] = *tasks_rm;
-      *tasks_mode[1] = *tasks_edf;
-
-
-   } else if(modo==3){
+   } else if(modo==11){
 
       FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
       FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
@@ -116,12 +103,8 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
       fclose(fp_exp_LLF);
 
       casos = 2;
-      show_mode[0]="RM";
-      show_mode[1]="LLF";
-
-      *tasks_mode[0] = *tasks_rm;
-      *tasks_mode[1] = *tasks_llf;
-
+      show_mode[0]="Rate Monotonic";
+      show_mode[2]="Least Laxity First";
    }
 
    int i,j,k,l,it,resto;
@@ -184,7 +167,35 @@ void full_create(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_
    
 
    for(l=0;l<casos;l++){
-     
+       int *tasks;
+       if(modo==8){
+          if(l==0){
+             tasks = (int*)tasks_rm;
+          } else if(l==1){
+             tasks = (int*)tasks_edf;
+          } else if(l==2){
+             tasks = (int*)tasks_llf;
+          }
+       } else if(modo==9){
+          if(l==0){
+             tasks = (int*)tasks_edf;
+          } else if(l==1){
+             tasks = (int*)tasks_llf;
+          }
+       } else if(modo==10){
+          if(l==0){
+             tasks = (int*)tasks_rm;
+          } else if(l==1){
+             tasks = (int*)tasks_edf;
+          }
+       } else if(modo==11){
+          if(l==0){
+             tasks = (int*)tasks_rm;
+          } else if(l==1){
+             tasks = (int*)tasks_llf;
+          }
+       }
+ 
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
       fprintf(fp_edit, "%s %s", "\\resizebox{.15\\columnwidth}{!}{", "\n");
