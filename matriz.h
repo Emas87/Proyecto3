@@ -67,9 +67,11 @@ int RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
          }
       }
       for(int i = 0; i < N_tareas; i++){//Se llena un campo de la matriz
-
+         if(tiempo == mcm_r){
+            break;
+         }
          if(cola_ready[orden[i]] == 1){
-            *((output+orden[i]*mcm_r) + tiempo) = 1;//se llena la posicion [orden[i]][tiempo]
+            (output[orden[i]*mcm_r + tiempo]) = 1;//se llena la posicion [orden[i]][tiempo]
             remaining[orden[i]]--;
             if(remaining[orden[i]] == 0){
                cola_ready[orden[i]] = 0;
@@ -114,7 +116,9 @@ int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
                next = i;
          }
       }
-      *((output+next*mcm_r) + tiempo) = cola_ready[next];//se llena la posicion [next][tiempo]
+      if(tiempo != mcm_r){
+         (output[next*mcm_r + tiempo]) = cola_ready[next];//se llena la posicion [next][tiempo]
+      }
       remaining[next]--;
       if(remaining[next] == 0){
          cola_ready[next] = 0;
@@ -154,7 +158,9 @@ int EDF(int N_tareas,int *p,int *te,int mcm_r,int *output){
             }
          }
       }
-      *((output+next*mcm_r) + tiempo) = cola_ready[next];//se llena la posicion [next][tiempo]
+      if(tiempo != mcm_r){      
+         (output[next*mcm_r + tiempo]) = cola_ready[next];//se llena la posicion [next][tiempo]
+      }
       remaining[next]--;
       if(remaining[next] == 0){
          cola_ready[next] = 0;
