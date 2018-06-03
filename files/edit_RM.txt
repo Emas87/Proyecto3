@@ -20,16 +20,19 @@ Explicacion Basica de RM \\
 \begin{tabular}{|l|l|l|} 
 \hline 
 \cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 3  &  1\\ \hline 
-T2   & 3  &  1\\ \hline 
-T3   & 3  &  1\\ \hline 
+T1   & 48  &  1\\ \hline 
+T2   & 48  &  1\\ \hline 
+T3   & 48  &  1\\ \hline 
+T4   & 48  &  1\\ \hline 
+T5   & 48  &  1\\ \hline 
+T6   & 48  &  1\\ \hline 
 \end{tabular} 
 \caption{Datos  Rate Monotonic } 
 \end{table} 
 Condicion: $\mu \leq U(n)$ \\ 
-$\mu =  1,000000 $ \\ 
-$U(n) =  0,779763 $ \\ 
-Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\ 
+$\mu =  0,125000 $ \\ 
+$U(n) =  0,734772 $ \\ 
+Dado que $\mu \leq U(n)$ el algoritmo indica que las tareas si son schedulable \\ 
 \end{frame} 
 
 %------------------------------------------------
@@ -40,18 +43,45 @@ Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\
 \frametitle{Tabla de Tiempo  Rate Monotonic } 
 \begin{table} 
 \centering 
-\begin{tabular}{|l|l|l|l|} 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
 \hline 
-St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} \\ \hline 
-T1 & \cellcolor{blue} & & \\ \hline 
-T2 & & \cellcolor{purple} & \\ \hline 
-T3 & & & \cellcolor{cyan} \\ \hline 
+St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & \cellcolor{gray} & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & \cellcolor{yellow} & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & \cellcolor{orange} & & & & & & & & & & & & & & & & & & \\ \hline 
 \end{tabular} 
 \caption{ Rate Monotonic 1 } 
 \end{table} 
 Escala Bloque : Ciclos = 1 : 1 \\ 
 Posicion Fallo: No hay ningun fallo \\ 
-mcm:  3 \\ 
+mcm:  48 \\ 
+\end{frame} 
+
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo  Rate Monotonic } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+\caption{ Rate Monotonic 2 } 
+\end{table} 
+Escala Bloque : Ciclos = 1 : 1 \\ 
+Posicion Fallo: No hay ningun fallo \\ 
+mcm:  48 \\ 
 \end{frame} 
 
 %------------------------------------------------
