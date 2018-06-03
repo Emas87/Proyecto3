@@ -4,7 +4,7 @@
 #include <string.h>
 #include <math.h>
 #include "create.h"
-#include "full_create.h"
+#include "wrapper.h"
 #include "join.h"
 #include "clean.h"
 
@@ -328,7 +328,7 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
       create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
    }
    if(create_mode >= 8){//Mismo slide
-      full_create((int*)output_rm, (int*)output_edf, (int*)output_llf, create_mode, N_tareas, mcm_r, pos_f_rm, pos_f_edf, pos_f_llf, escala);//RM
+      wrapper((int*)output_rm, (int*)output_edf, (int*)output_llf, create_mode, N_tareas, mcm_r, pos_f_rm, pos_f_edf, pos_f_llf, escala);//RM
    }
 
    join();
