@@ -241,6 +241,14 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    for(int i = 0;i<N_tareas;i++){
       escala = mcd(escala,te[i]);
    }
+   //Se calcula el u y U(n)
+   Un = (double)N_tareas*(pow((double)2,(double)1/(double)N_tareas)-1);
+   for(int i = 0;i<N_tareas;i++){
+      miu += (float)te[i]/(float)p[i];
+   }
+   //Funcion de la ecuaciones
+   //ecuacion(N_tareas,te,p,miu,Un);
+
    //printf("escala: %d\n",escala);
    //Ahora se divide entre la escala
    for(int i = 0;i<N_tareas;i++){
@@ -257,11 +265,6 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    int output_llf[N_tareas][mcm_r];
    memset(output_llf, 0, sizeof output_llf );
 
-   //Se calcula el u y U(n)
-   Un = (double)N_tareas*(pow((double)2,(double)1/(double)N_tareas)-1);
-   for(int i = 0;i<N_tareas;i++){
-      miu += (float)te[i]/(float)p[i];
-   }
    int create_mode;
    switch(caso){
       case 1:
