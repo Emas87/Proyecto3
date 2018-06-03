@@ -104,9 +104,9 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-            fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
          } else {
-            fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
          }
       }
       fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
@@ -132,7 +132,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       if(pos_fall==0){
          fprintf(fp_edit, "%s %s %s", "Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
       } else {
-         fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
+         fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall+1, "\\\\", "\n");
       }
       fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");

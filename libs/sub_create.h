@@ -58,9 +58,9 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-            fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
          } else {
-            fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
          }
       }
       fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");

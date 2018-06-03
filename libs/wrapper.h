@@ -318,7 +318,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       if(pos_fall_rm==0){
          fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
       } else {
-         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_rm, "\\\\", "\n");
+         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_rm+1, "\\\\", "\n");
       }
       fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
 
@@ -329,7 +329,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       if(pos_fall_edf==0){
          fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
       } else {
-         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_edf, "\\\\", "\n");
+         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_edf+1, "\\\\", "\n");
       }
       fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
 
@@ -340,7 +340,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       if(pos_fall_llf==0){
          fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
       } else {
-         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_llf, "\\\\", "\n");
+         fprintf(fp_edit, "%s %d %s %s", "\\item Posicion Fallo: ", pos_fall_llf+1, "\\\\", "\n");
       }
       fprintf(fp_edit, "%s %s", "\\end{itemize}", "\n");
    }
