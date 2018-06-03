@@ -25,23 +25,32 @@ void Compute(gpointer context_object){
    GtkWidget *cb_rm = g_object_get_data (context_object, "cb_rm");
    GtkWidget *cb_edf = g_object_get_data (context_object, "cb_edf");
    GtkWidget *cb_llf = g_object_get_data (context_object, "cb_llf");
+   GtkWidget *independiente = g_object_get_data (context_object, "independiente");
+
    int caso=0;
-   if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+   if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
       caso = 1;//Todos los algoritmo solicitados
-   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
       caso = 2;//solo EDF y LLF
-   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) ){
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
       caso = 3;//solo RM y EDF
-   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
       caso = 4;//solo RM y LLF
+   }  else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf)) && !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
+      caso = 8;//Todos los algoritmo solicitados mismo slide
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf)) && !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
+      caso = 9;//solo EDF y LLF mismo slide
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf)) && !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
+      caso = 10;//solo RM y EDF mismo slide
+   } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm)) && gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf)) && !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(independiente))){
+      caso = 11;//solo RM y LLF mismo slide
    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_rm))){
       caso = 5;//solo RM
    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_edf))){
       caso = 6;//Solo EDF
    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb_llf))){
       caso = 7;//Solo LLF
-   }
-   CrearMatriz(caso,N_tareas,p,te);
+   }   CrearMatriz(caso,N_tareas,p,te);
 }
 void prev_window_A(GtkWidget *widget, gpointer context_object ){
    GtkWidget *prev = g_object_get_data (context_object, "window2");
@@ -102,6 +111,8 @@ void Algoritmos( gpointer context_object){
 	gtk_box_pack_start (GTK_BOX (box),cb_edf , TRUE, TRUE , 10);
    GtkWidget *cb_llf = gtk_check_button_new_with_label ("LLF");
 	gtk_box_pack_start (GTK_BOX (box),cb_llf , TRUE, TRUE , 10);
+   GtkWidget *independiente = gtk_check_button_new_with_label ("Slides separados");
+	gtk_box_pack_start (GTK_BOX (box),independiente , TRUE, TRUE , 10);
 
 	b_prev = gtk_button_new_with_label("Previous");
 	b_finish = gtk_button_new_with_label("Finish");
@@ -112,6 +123,8 @@ void Algoritmos( gpointer context_object){
    g_object_set_data (context_object, "cb_rm",cb_rm );
    g_object_set_data (context_object, "cb_edf",cb_edf );
    g_object_set_data (context_object, "cb_llf",cb_llf );
+   g_object_set_data (context_object, "independiente",independiente );
+
    GtkWidget *label_a = gtk_label_new(""); //Label que indica si los algoritmos son correctos
    g_object_set_data (context_object, "label_a",label_a);
 	g_signal_connect (G_OBJECT (b_finish), "clicked", G_CALLBACK (test_a), context_object );

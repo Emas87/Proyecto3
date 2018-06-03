@@ -290,6 +290,27 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
          pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
          create_mode = caso;
       break;     
+      case 8:
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
+      break;
+      case 9:
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
+      break;      
+      case 10:
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_edf = EDF(N_tareas,p,te,mcm_r,(int*)output_edf);
+         create_mode = caso;
+      break;
+      case 11:
+         pos_f_rm = RM(N_tareas,p,te,mcm_r,(int*)output_rm);
+         pos_f_llf = LLF(N_tareas,p,te,mcm_r,(int*)output_llf);
+         create_mode = caso;
+      break;
    }
 
    print_matr((int*)output_rm,(int*)output_edf,(int*)output_llf,N_tareas,mcm_r,pos_f_rm,pos_f_edf,pos_f_llf);
@@ -305,6 +326,24 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    if(create_mode == 1 || create_mode == 2 || create_mode == 4 || create_mode == 7){
       create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
    }
+   if(create_mode == 8){//Mismo slide
+      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
+      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
+      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
+   } 
+   if(create_mode == 9){
+      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
+      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF      
+   } 
+   if(create_mode == 10){
+      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
+      create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
+   }
+   if(create_mode == 11){
+      create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM      
+      create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
+   }
+
    join();
    system("pdflatex final.tex");
    system("evince final.pdf");
