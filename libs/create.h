@@ -75,56 +75,10 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
    }
 
-   int i,j,k,it,resto;
+   int i,j,k,it;
    int filas,columnas[512];
 
-   if(mcm_r>24){
-
-      if(pos_fall==0){
-         resto = mcm_r%24;
-         if(resto==0){
-            it = mcm_r/24;
-            for(i=1;i<=it;i++){
-               columnas[i] = 24;
-            }
-         } else {
-            it = mcm_r/24 + 1;
-            for(i=1;i<it;i++){
-               columnas[i] = 24;
-            }
-            columnas[it] = resto;
-         }
-      } else {
-         if(pos_fall>24){
-            resto = pos_fall%24;
-            if(resto==0){
-               it = pos_fall/24;
-               for(i=1;i<=it;i++){
-                  columnas[i] = 24;
-               }
-            } else {
-               it = pos_fall/24 + 1;
-               for(i=1;i<it;i++){
-                  columnas[i] = 24;
-               }
-               columnas[it] = resto+1;
-            }
-         } else {
-            it = 1;
-            columnas[it] = pos_fall+1;
-         }
-      }
-      filas = N_tareas;
-   }
-   else if(mcm_r<=24){
-      it = 1;
-      filas = N_tareas;
-      if(pos_fall==0){
-         columnas[it] = mcm_r;
-      } else {
-         columnas[it] = pos_fall+1;
-      }
-   }
+   positions(N_tareas, mcm_r, pos_fall, &filas, (int*)&columnas, &it);
 
    fprintf(fp_edit, "%s %s %s %s", "\\subsection{Tabla de Tiempo ", show_mode ,"}", "\n");
 
@@ -150,9 +104,9 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-            fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
          } else {
-            fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
          }
       }
       fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
@@ -175,7 +129,11 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
       fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");
-      fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall, "\\\\", "\n");
+      if(pos_fall==0){
+         fprintf(fp_edit, "%s %s %s", "Posicion Fallo: No hay ningun fallo", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %d %s %s", "Posicion Fallo: ", pos_fall+1, "\\\\", "\n");
+      }
       fprintf(fp_edit, "%s %d %s %s", "mcm: ", mcm_r, "\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
       fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");

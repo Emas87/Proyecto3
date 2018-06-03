@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+=======
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} &  4 \cellcolor{green} &  5 \cellcolor{green} &  6 \cellcolor{green} &  7 \cellcolor{red} \\ \hline 
+T1 & & & & & & & \\ \hline 
+T2 & & & & & & & \\ \hline 
+T3 & & & & & & & \\ \hline 
+T4 & & & & & & \cellcolor{gray} & \\ \hline 
+T5 & & & \cellcolor{yellow} & & \cellcolor{yellow} & & \cellcolor{yellow} \\ \hline 
+T6 & \cellcolor{orange} & \cellcolor{orange} & & \cellcolor{orange} & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 1 } 
+\end{table} 
+>>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf

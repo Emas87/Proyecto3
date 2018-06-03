@@ -50,7 +50,7 @@ void ecuacion(int modo, int N_tareas, int *te, int *p, double miu, double Un){
    fprintf(fp_edit, "%s %s", str, "\n");
 
    fprintf(fp_edit, "%s %s", "\\hline", "\n");
-   fprintf(fp_edit, "%s %s %s %s", "Tareas & Periodo & T. Ejecucion", "\\\\", "\\hline", "\n");
+   fprintf(fp_edit, "%s %s %s %s", "\\cellcolor{lightgray}Tarea & \\cellcolor{lightgray}$P_i$ & \\cellcolor{lightgray}$C_i$", "\\\\", "\\hline", "\n");
    //Tasks
    for(i=0;i<N_tareas;i++){
       fprintf(fp_edit, "%s %s", task_name[i], " & ");
@@ -62,15 +62,27 @@ void ecuacion(int modo, int N_tareas, int *te, int *p, double miu, double Un){
    fprintf(fp_edit, "%s %s %s %s", "\\caption{Datos ", show_mode,"}", "\n");
    fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
 
-   if(modo==0){
-      fprintf(fp_edit, "%s %f %s %s", "Mu = ", miu, "\\\\", "\n");
-      fprintf(fp_edit, "%s %f %s %s", "U(n) = ", Un, "\\\\", "\n");
-   } else if(modo==1){
-      fprintf(fp_edit, "%s %f %s %s", "Mu = ", miu, "\\\\", "\n");
-      fprintf(fp_edit, "%s %f %s %s", "U(n) = ", Un, "\\\\", "\n");
-   } else if(modo==2){
-      fprintf(fp_edit, "%s %f %s %s", "Mu = ", miu, "\\\\", "\n");
-      fprintf(fp_edit, "%s %f %s %s", "U(n) = ", Un, "\\\\", "\n");
+   if(modo==0){//RM
+      fprintf(fp_edit, "%s %s %s", "Condicion: $\\mu \\leq U(n)$", "\\\\", "\n");
+      fprintf(fp_edit, "%s %f %s %s", "$\\mu = ", miu, "$ \\\\", "\n");
+      fprintf(fp_edit, "%s %f %s %s", "$U(n) = ", Un, "$ \\\\", "\n");
+      if(miu<=Un){
+         fprintf(fp_edit, "%s %s %s","Dado que $\\mu \\leq U(n)$ el algoritmo indica que las tareas si son schedulable", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %s %s","Dado que $\\mu>U(n)$ el algoritmo indica que las tareas no son schedulable", "\\\\", "\n");
+      }
+   } else if(modo==1){//EDF
+      fprintf(fp_edit, "%s %s %s", "Condicion: $\\mu \\leq 1$", "\\\\", "\n");
+      fprintf(fp_edit, "%s %f %s %s", "$\\mu = ", miu, "$ \\\\", "\n");
+      if(miu<=1.0){
+         fprintf(fp_edit, "%s %s %s","Dado que $\\mu \\leq 1$ el algoritmo indica que las tareas si son schedulable", "\\\\", "\n");
+      } else {
+         fprintf(fp_edit, "%s %s %s","Dado que $\\mu>1$ el algoritmo indica que las tareas no son schedulable", "\\\\", "\n");
+      }
+
+   } else if(modo==2){//LLF
+      fprintf(fp_edit, "%s %f %s %s", "$\\mu = ", miu, "$ \\\\", "\n");
+      fprintf(fp_edit, "%s %f %s %s", "$U(n) = ", Un, "$ \\\\", "\n");
 
    }
 

@@ -6,7 +6,7 @@
 //modo 1 EDF
 //modo 2 LLF
 
-void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
+void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala, int filas, int *columnas, int k, int it){
 
    const char *task_name[6];
    task_name[0] = "T1 ";
@@ -38,62 +38,11 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       strcpy(show_mode,"Least Laxity First");
    }
 
-   int i,j,k,it,resto;
-   int filas,columnas[512];
-
-   if(mcm_r>24){
-
-      if(pos_fall==0){
-         resto = mcm_r%24;
-         if(resto==0){
-            it = mcm_r/24;
-            for(i=1;i<=it;i++){
-               columnas[i] = 24;
-            }
-         } else {
-            it = mcm_r/24 + 1;
-            for(i=1;i<it;i++){
-               columnas[i] = 24;
-            }
-            columnas[it] = resto;
-         }
-      } else {
-         if(pos_fall>24){
-            resto = pos_fall%24;
-            if(resto==0){
-               it = pos_fall/24;
-               for(i=1;i<=it;i++){
-                  columnas[i] = 24;
-               }
-            } else {
-               it = pos_fall/24 + 1;
-               for(i=1;i<it;i++){
-                  columnas[i] = 24;
-               }
-               columnas[it] = resto+1;
-            }
-         } else {
-            it = 1;
-            columnas[it] = pos_fall+1;
-         }
-      }
-      filas = N_tareas;
-   }
-   else if(mcm_r<=24){
-      it = 1;
-      filas = N_tareas;
-      if(pos_fall==0){
-         columnas[it] = mcm_r;
-      } else {
-         columnas[it] = pos_fall+1;
-      }
-   }
-
-   for(k=0;k<it;k++) {
+   int i,j,resto;
 
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
-      fprintf(fp_edit, "%s %s", "\\resizebox{.15\\columnwidth}{!}{", "\n");
+      fprintf(fp_edit, "%s %s", "\\resizebox{!}{.07\\linewidth}{", "\n");
 
       char str[512];
       strcpy(str,"\\begin{tabular}{|l|");
@@ -109,9 +58,9 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-            fprintf(fp_edit, "%s", "& \\cellcolor{red} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
          } else {
-            fprintf(fp_edit, "%s", "& \\cellcolor{green} ");
+            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
          }
       }
       fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
@@ -135,7 +84,6 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
 
-   }
 
    fclose(fp_edit);
 
