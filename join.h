@@ -8,6 +8,7 @@ void join(){
    FILE *fp_edit_RM = fopen("edit_RM.txt", "r");
    FILE *fp_edit_EDF = fopen("edit_EDF.txt", "r");
    FILE *fp_edit_LLF = fopen("edit_LLF.txt", "r");
+   FILE *fp_edit_FULL = fopen("edit_FULL.txt", "r");
    FILE *fp_end = fopen("end.txt", "r");
  
    // Open file to store the result
@@ -30,6 +31,10 @@ void join(){
    while ((c = fgetc(fp_edit_LLF)) != EOF)
       fputc(c, fp_final);
 
+   // Copy contents of second file to .tex file
+   while ((c = fgetc(fp_edit_FULL)) != EOF)
+      fputc(c, fp_final);
+
    // Copy contents of third file to .tex file
    while ((c = fgetc(fp_end)) != EOF)
       fputc(c, fp_final);
@@ -38,6 +43,7 @@ void join(){
    fclose(fp_edit_RM);
    fclose(fp_edit_EDF);
    fclose(fp_edit_LLF);
+   fclose(fp_edit_FULL);
    fclose(fp_end);
    fclose(fp_final);
 
