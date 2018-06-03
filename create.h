@@ -46,16 +46,34 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
       fclose(fp_exp_RM);
+
+      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
+      while ((c = fgetc(fp_ec_RM)) != EOF)
+         fputc(c, fp_edit);
+      fclose(fp_ec_RM);
+
    } else if(modo==1){
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
       while ((c = fgetc(fp_exp_EDF)) != EOF)
          fputc(c, fp_edit);
       fclose(fp_exp_EDF);
+
+      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
+      while ((c = fgetc(fp_ec_EDF)) != EOF)
+         fputc(c, fp_edit);
+      fclose(fp_ec_EDF);
+
    } else if(modo==2){
       FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
       while ((c = fgetc(fp_exp_LLF)) != EOF)
          fputc(c, fp_edit);
       fclose(fp_exp_LLF);
+
+      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
+      while ((c = fgetc(fp_ec_LLF)) != EOF)
+         fputc(c, fp_edit);
+      fclose(fp_ec_LLF);
+
    }
 
    int i,j,k,it,resto;

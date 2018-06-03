@@ -328,16 +328,19 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    //create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int escala){
    clean();
    if(create_mode == 1 || create_mode == 3 || create_mode == 4 || create_mode == 5){
+      ecuacion(0,N_tareas,te,p,miu,Un);
       create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
    } 
    if(create_mode == 1 || create_mode == 2 || create_mode == 3 || create_mode == 6){
+      ecuacion(1,N_tareas,te,p,miu,Un);
       create((int*)output_edf, 1, N_tareas, mcm_r, pos_f_edf, escala);//EDF
    } 
    if(create_mode == 1 || create_mode == 2 || create_mode == 4 || create_mode == 7){
+      ecuacion(2,N_tareas,te,p,miu,Un);
       create((int*)output_llf, 2, N_tareas, mcm_r, pos_f_llf, escala);//LLF
    }
    if(create_mode >= 8){//Mismo slide
-      wrapper((int*)output_rm, (int*)output_edf, (int*)output_llf, create_mode, N_tareas, mcm_r, pos_f_rm, pos_f_edf, pos_f_llf, escala);//RM
+      wrapper((int*)output_rm, (int*)output_edf, (int*)output_llf, create_mode, N_tareas, mcm_r, pos_f_rm, pos_f_edf, pos_f_llf, escala, te, p, miu, Un);
    }
 
    join();

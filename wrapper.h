@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "sub_create.h"
+#include "ecuacion.h"
 
-void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall_rm, int pos_fall_edf, int pos_fall_llf, int escala){
+void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall_rm, int pos_fall_edf, int pos_fall_llf, int escala, int *te, int *p, double miu, double Un){
 
    char file[512];
 
@@ -13,9 +14,16 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    if(modo==8){
 
+      ecuacion(0,N_tareas,te,p,miu,Un);//RM
+      ecuacion(1,N_tareas,te,p,miu,Un);//EDF
+      ecuacion(2,N_tareas,te,p,miu,Un);//LLF
+
       FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
       FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
+      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
+      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
+      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
@@ -23,10 +31,19 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
          fputc(c, fp_edit);
       while ((c = fgetc(fp_exp_LLF)) != EOF)
          fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_RM)) != EOF)
+         fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_EDF)) != EOF)
+         fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_LLF)) != EOF)
+         fputc(c, fp_edit);
 
       fclose(fp_exp_RM);
       fclose(fp_exp_EDF);
       fclose(fp_exp_LLF);
+      fclose(fp_ec_RM);
+      fclose(fp_ec_EDF);
+      fclose(fp_ec_LLF);
 
       fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
       fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
@@ -53,16 +70,27 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    } else if(modo==9){
 
+      ecuacion(1,N_tareas,te,p,miu,Un);//EDF
+      ecuacion(2,N_tareas,te,p,miu,Un);//LLF
+
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
       FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
+      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
+      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_EDF)) != EOF)
          fputc(c, fp_edit);
       while ((c = fgetc(fp_exp_LLF)) != EOF)
          fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_EDF)) != EOF)
+         fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_LLF)) != EOF)
+         fputc(c, fp_edit);
 
       fclose(fp_exp_EDF);
       fclose(fp_exp_LLF);
+      fclose(fp_ec_EDF);
+      fclose(fp_ec_LLF);
 
       fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
       fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
@@ -86,16 +114,27 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    } else if(modo==10){
 
+      ecuacion(0,N_tareas,te,p,miu,Un);//RM
+      ecuacion(1,N_tareas,te,p,miu,Un);//EDF
+
       FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
       FILE *fp_exp_EDF = fopen("exp_EDF.txt", "r");
+      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
+      FILE *fp_ec_EDF = fopen("ec_EDF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
       while ((c = fgetc(fp_exp_EDF)) != EOF)
          fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_RM)) != EOF)
+         fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_EDF)) != EOF)
+         fputc(c, fp_edit);
 
       fclose(fp_exp_RM);
       fclose(fp_exp_EDF);
+      fclose(fp_ec_RM);
+      fclose(fp_ec_EDF);
 
       fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
       fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
@@ -118,16 +157,27 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    } else if(modo==11){
 
+      ecuacion(0,N_tareas,te,p,miu,Un);//RM
+      ecuacion(2,N_tareas,te,p,miu,Un);//LLF
+
       FILE *fp_exp_RM = fopen("exp_RM.txt", "r");
       FILE *fp_exp_LLF = fopen("exp_LLF.txt", "r");
+      FILE *fp_ec_RM = fopen("ec_RM.txt", "r");
+      FILE *fp_ec_LLF = fopen("ec_LLF.txt", "r");
 
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
       while ((c = fgetc(fp_exp_LLF)) != EOF)
          fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_RM)) != EOF)
+         fputc(c, fp_edit);
+      while ((c = fgetc(fp_ec_LLF)) != EOF)
+         fputc(c, fp_edit);
 
       fclose(fp_exp_RM);
       fclose(fp_exp_LLF);
+      fclose(fp_ec_RM);
+      fclose(fp_ec_LLF);
 
       fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
       fprintf(fp_edit, "%s","\n%------------------------------------------------\n");

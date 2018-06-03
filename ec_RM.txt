@@ -1,0 +1,21 @@
+\subsection{Tests de Schedulability  Rate Monotonic } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Rate Monotonic } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+Tareas & Periodo & T. Ejecucion \\ \hline 
+T1   & 3  &  1\\ \hline 
+T2   & 3  &  1\\ \hline 
+T3   & 3  &  1\\ \hline 
+\end{tabular} 
+\caption{Datos  Rate Monotonic } 
+\end{table} 
+Mu =  1,000000 \\ 
+U(n) =  0,779763 \\ 
+\end{frame} 
+
+%------------------------------------------------
