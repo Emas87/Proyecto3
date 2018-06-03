@@ -4,10 +4,81 @@
 #include "sub_create.h"
 #include "ecuacion.h"
 
+int positions(int N_tareas, int mcm_r, int pos_fall, int *filas, int * columnas, int *it){
+
+   int i,resto;
+
+   if(mcm_r>24){
+
+      if(pos_fall==0){
+         resto = mcm_r%24;
+         if(resto==0){
+            *it = mcm_r/24;
+            for(i=1;i<=*it;i++){
+               columnas[i] = 24;
+            }
+         } else {
+            *it = mcm_r/24 + 1;
+            for(i=1;i<*it;i++){
+               columnas[i] = 24;
+            }
+            columnas[*it] = resto;
+         }
+      } else {
+         if(pos_fall>24){
+            resto = pos_fall%24;
+            if(resto==0){
+               *it = pos_fall/24;
+               for(i=1;i<=*it;i++){
+                  columnas[i] = 24;
+               }
+            } else {
+               *it = pos_fall/24 + 1;
+               for(i=1;i<*it;i++){
+                  columnas[i] = 24;
+               }
+               columnas[*it] = resto+1;
+            }
+         } else {
+            *it = 1;
+            columnas[*it] = pos_fall+1;
+         }
+      }
+      *filas = N_tareas;
+   }
+   else if(mcm_r<=24){
+      *it = 1;
+      *filas = N_tareas;
+      if(pos_fall==0){
+         columnas[*it] = mcm_r;
+      } else {
+         columnas[*it] = pos_fall+1;
+      }
+   }
+
+}
+
 void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tareas, int mcm_r, int pos_fall_rm, int pos_fall_edf, int pos_fall_llf, int escala, int *te, int *p, double miu, double Un){
 
    FILE *fp_edit = fopen("files/edit_FULL.txt", "w");
    char c;
+   int k,it;
+
+   int filas, columnas_RM[512], it_RM, columnas_EDF[512], it_EDF, columnas_LLF[512], it_LLF;
+
+   positions(N_tareas, mcm_r, pos_fall_rm, &filas, (int*)&columnas_RM, &it_RM);
+   positions(N_tareas, mcm_r, pos_fall_edf, &filas, (int*)&columnas_EDF, &it_EDF);
+   positions(N_tareas, mcm_r, pos_fall_llf, &filas, (int*)&columnas_LLF, &it_LLF);
+
+   if(it_RM>=it_EDF && it_RM>=it_LLF){
+      it = it_RM;
+   } else 
+   if(it_EDF>=it_RM && it_EDF>=it_LLF){
+      it = it_EDF;
+   } else 
+   if(it_LLF>=it_RM && it_LLF>=it_EDF){
+      it = it_RM;
+   }  
 
    if(modo==8){
 
@@ -42,28 +113,38 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       fclose(fp_ec_EDF);
       fclose(fp_ec_LLF);
 
-      fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
-      fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
-      fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
+      for(k=0;k<it;k++) {
 
-      sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala);//RM
-      sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala);//EDF
-      sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala);//LLF
+         fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
+         fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
+         fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
+         fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
 
-      FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
-      FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
-      FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
+         if(k<it_RM){
+            sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala, filas, (int*)columnas_RM, k, it_RM);//RM
+         }
+         if(k<it_EDF){
+            sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala, filas, (int*)columnas_EDF, k, it_EDF);//EDF
+         }
+         if(k<it_LLF){
+            sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala, filas, (int*)columnas_LLF, k, it_LLF);//LLF
+         }
 
-      while ((c = fgetc(fp_exp_RM)) != EOF)
-         fputc(c, fp_edit);
-      while ((c = fgetc(fp_exp_EDF)) != EOF)
-         fputc(c, fp_edit);
-      while ((c = fgetc(fp_exp_LLF)) != EOF)
-         fputc(c, fp_edit);
+         FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
+         FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
+         FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
 
-      fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
-      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+         while ((c = fgetc(fp_FULL_edit_RM)) != EOF)
+            fputc(c, fp_edit);
+         while ((c = fgetc(fp_FULL_edit_EDF)) != EOF)
+            fputc(c, fp_edit);
+         while ((c = fgetc(fp_FULL_edit_LLF)) != EOF)
+            fputc(c, fp_edit);
+
+         fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+         fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
+      }
 
    } else if(modo==9){
 
@@ -89,25 +170,32 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       fclose(fp_ec_EDF);
       fclose(fp_ec_LLF);
 
-      fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
-      fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
-      fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
+      for(k=0;k<it;k++) {
 
-      sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala);//EDF
-      sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala);//LLF
+         fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
+         fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
+         fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
+         fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
 
-      FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
-      FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
+         if(k<it_EDF){
+            sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala, filas, (int*)columnas_EDF, k, it_EDF);//EDF
+         }
+         if(k<it_LLF){
+            sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala, filas, (int*)columnas_LLF, k, it_LLF);//LLF
+         }
 
-      while ((c = fgetc(fp_exp_EDF)) != EOF)
-         fputc(c, fp_edit);
-      while ((c = fgetc(fp_exp_LLF)) != EOF)
-         fputc(c, fp_edit);
+         FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
+         FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
 
-      fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
-      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+         while ((c = fgetc(fp_FULL_edit_EDF)) != EOF)
+            fputc(c, fp_edit);
+         while ((c = fgetc(fp_FULL_edit_LLF)) != EOF)
+            fputc(c, fp_edit);
 
+         fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+         fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
+      }
 
    } else if(modo==10){
 
@@ -133,24 +221,32 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       fclose(fp_ec_RM);
       fclose(fp_ec_EDF);
 
-      fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
-      fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
-      fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
+      for(k=0;k<it;k++) {
 
-      sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala);//RM
-      sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala);//EDF
+         fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
+         fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
+         fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
+         fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
 
-      FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
-      FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
+         if(k<it_RM){
+            sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala, filas, (int*)columnas_RM, k, it_RM);//RM
+         }
+         if(k<it_EDF){
+            sub_create((int*)tasks_edf, 1, N_tareas, mcm_r, pos_fall_edf, escala, filas, (int*)columnas_EDF, k, it_EDF);//EDF
+         }
 
-      while ((c = fgetc(fp_exp_RM)) != EOF)
-         fputc(c, fp_edit);
-      while ((c = fgetc(fp_exp_EDF)) != EOF)
-         fputc(c, fp_edit);
+         FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
+         FILE *fp_FULL_edit_EDF = fopen("files/FULL_edit_EDF.txt", "r");
 
-      fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
-      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+         while ((c = fgetc(fp_FULL_edit_RM)) != EOF)
+            fputc(c, fp_edit);
+         while ((c = fgetc(fp_FULL_edit_EDF)) != EOF)
+            fputc(c, fp_edit);
+
+         fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+         fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
+      }
 
    } else if(modo==11){
 
@@ -176,27 +272,34 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       fclose(fp_ec_RM);
       fclose(fp_ec_LLF);
 
-      fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
-      fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
-      fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
-      fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
+      for(k=0;k<it;k++) {
 
-      sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala);//RM
-      sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala);//LLF
+         fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
+         fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
+         fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
+         fprintf(fp_edit, "%s %s", "\\frametitle{Tabla de Tiempo Completa}", "\n");
 
-      FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
-      FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
+         if(k<it_RM){
+            sub_create((int*)tasks_rm, 0, N_tareas, mcm_r, pos_fall_rm, escala, filas, (int*)columnas_RM, k, it_RM);//RM
+         }
+         if(k<it_LLF){
+            sub_create((int*)tasks_llf, 2, N_tareas, mcm_r, pos_fall_llf, escala, filas, (int*)columnas_LLF, k, it_LLF);//LLF
+         }
 
-      while ((c = fgetc(fp_exp_RM)) != EOF)
-         fputc(c, fp_edit);
-      while ((c = fgetc(fp_exp_LLF)) != EOF)
-         fputc(c, fp_edit);
+         FILE *fp_FULL_edit_RM = fopen("files/FULL_edit_RM.txt", "r");
+         FILE *fp_FULL_edit_LLF = fopen("files/FULL_edit_LLF.txt", "r");
 
-      fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
-      fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+         while ((c = fgetc(fp_FULL_edit_RM)) != EOF)
+            fputc(c, fp_edit);
+         while ((c = fgetc(fp_FULL_edit_LLF)) != EOF)
+            fputc(c, fp_edit);
+
+         fprintf(fp_edit, "%s %s", "\\end{frame}", "\n");
+         fprintf(fp_edit, "%s", "\n%------------------------------------------------\n");
+
+      }
 
    }
-
 
    fprintf(fp_edit, "%s %s", "\\subsection{Informacion de Tabla de Tiempo Completa}", "\n");
    fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
