@@ -8,16 +8,16 @@
 \begin{tabular}{|l|l|l|} 
 \hline 
 \cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 48  &  1\\ \hline 
-T2   & 48  &  1\\ \hline 
-T3   & 48  &  1\\ \hline 
-T4   & 48  &  1\\ \hline 
-T5   & 48  &  1\\ \hline 
-T6   & 48  &  1\\ \hline 
+T1   & 72  &  1\\ \hline 
+T2   & 72  &  1\\ \hline 
+T3   & 72  &  3\\ \hline 
+T4   & 72  &  45\\ \hline 
+T5   & 72  &  13\\ \hline 
+T6   & 72  &  15\\ \hline 
 \end{tabular} 
 \caption{Datos  Least Laxity First } 
 \end{table} 
-$\mu =  0,125000 $ \\ 
+$\mu =  1,083333 $ \\ 
 $U(n) =  0,734772 $ \\ 
 \end{frame} 
 

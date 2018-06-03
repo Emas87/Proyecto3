@@ -42,7 +42,7 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
 
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
-      fprintf(fp_edit, "%s %s", "\\resizebox{.15\\columnwidth}{!}{", "\n");
+      fprintf(fp_edit, "%s %s", "\\resizebox{!}{.07\\linewidth}{", "\n");
 
       char str[512];
       strcpy(str,"\\begin{tabular}{|l|");
