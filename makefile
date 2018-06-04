@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS= -g -W `pkg-config --cflags --libs gtk+-3.0` -std=gnu99 -lm
-DEPS = matriz.h
+DEPS = libs/matriz.h
 all: main
 
 %.o: %.c $(DEPS)

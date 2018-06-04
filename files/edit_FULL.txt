@@ -1,0 +1,198 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+%------------------------------------------------
+
+\section{Rate Monotonic}
+
+\subsection{Algoritmo RM}
+
+\begin{frame} 
+\frametitle{Algoritmo Rate Monotonic (RM)} 
+Explicacion Basica de RM \\
+\end{frame}
+
+%------------------------------------------------
+%------------------------------------------------
+
+\section{Earliest Dead First}
+
+\subsection{Algoritmo EDF}
+
+\begin{frame} 
+\frametitle{Algoritmo Earliest Dead First (EDF)} 
+Explicacion Basica de EDF \\
+\end{frame}
+
+%------------------------------------------------
+%------------------------------------------------
+
+\section{Least Laxity First}
+
+\subsection{Algoritmo LLF}
+
+\begin{frame} 
+\frametitle{Algoritmo Least Laxity First (LLF)} 
+Explicacion Basica de LLF \\
+\end{frame}
+
+%------------------------------------------------
+\subsection{Tests de Schedulability  Rate Monotonic } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Rate Monotonic } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 6  &  1\\ \hline 
+T2   & 6  &  2\\ \hline 
+T3   & 6  &  3\\ \hline 
+T4   & 6  &  4\\ \hline 
+T5   & 6  &  5\\ \hline 
+T6   & 6  &  6\\ \hline 
+\end{tabular} 
+\caption{Datos  Rate Monotonic } 
+\end{table} 
+Condicion: $\mu \leq U(n)$ \\ 
+$\mu =  3,500000 $ \\ 
+$U(n) =  0,734772 $ \\ 
+Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\ 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tests de Schedulability  Earliest Dead First } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Earliest Dead First } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 6  &  1\\ \hline 
+T2   & 6  &  2\\ \hline 
+T3   & 6  &  3\\ \hline 
+T4   & 6  &  4\\ \hline 
+T5   & 6  &  5\\ \hline 
+T6   & 6  &  6\\ \hline 
+\end{tabular} 
+\caption{Datos  Earliest Dead First } 
+\end{table} 
+Condicion: $\mu \leq 1$ \\ 
+$\mu =  3,500000 $ \\ 
+Dado que $\mu>1$ el algoritmo indica que las tareas no son schedulable \\ 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tests de Schedulability  Least Laxity First } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Least Laxity First } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 6  &  1\\ \hline 
+T2   & 6  &  2\\ \hline 
+T3   & 6  &  3\\ \hline 
+T4   & 6  &  4\\ \hline 
+T5   & 6  &  5\\ \hline 
+T6   & 6  &  6\\ \hline 
+\end{tabular} 
+\caption{Datos  Least Laxity First } 
+\end{table} 
+$\mu =  3,500000 $ \\ 
+$U(n) =  0,734772 $ \\ 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} &  4 \cellcolor{green} &  5 \cellcolor{green} &  6 \cellcolor{green} &  7 \cellcolor{red} \\ \hline 
+T1 & \cellcolor{blue} & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & \cellcolor{purple} & & & & \\ \hline 
+T3 & & & & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & \\ \hline 
+T5 & & & & & & & \\ \hline 
+T6 & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 1 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} &  4 \cellcolor{green} &  5 \cellcolor{green} &  6 \cellcolor{green} &  7 \cellcolor{red} \\ \hline 
+T1 & & & & & & & \\ \hline 
+T2 & & & & & & & \\ \hline 
+T3 & & & & & & & \\ \hline 
+T4 & & & & & & & \\ \hline 
+T5 & & & & & & & \cellcolor{yellow} \\ \hline 
+T6 & \cellcolor{orange} & \cellcolor{orange} & \cellcolor{orange} & \cellcolor{orange} & \cellcolor{orange} & \cellcolor{orange} \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Dead First 1 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} &  4 \cellcolor{green} &  5 \cellcolor{green} &  6 \cellcolor{green} &  7 \cellcolor{red} \\ \hline 
+T1 & & & & & & & \\ \hline 
+T2 & & & & & & & \\ \hline 
+T3 & & & & & & & \\ \hline 
+T4 & & & & & & \cellcolor{gray} & \\ \hline 
+T5 & & & \cellcolor{yellow} & & \cellcolor{yellow} & & \cellcolor{yellow} \\ \hline 
+T6 & \cellcolor{orange} & \cellcolor{orange} & & \cellcolor{orange} & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 1 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Informacion de Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Informacion de Tabla de Tiempo Completa} 
+Informacion General:\\ 
+\begin{itemize} 
+\item Escala Bloque : Ciclos = 1 : 1 \\ 
+\item mcm:  6 \\ 
+\end{itemize} 
+Informacion de Rate Monotonic:\\ 
+\begin{itemize} 
+\item Posicion Fallo:  7 \\ 
+\end{itemize} 
+Informacion de Earliest Dead First:\\ 
+\begin{itemize} 
+\item Posicion Fallo:  7 \\ 
+\end{itemize} 
+Informacion de Least Laxity First:\\ 
+\begin{itemize} 
+\item Posicion Fallo:  7 \\ 
+\end{itemize} 
+\end{frame} 
+
+%------------------------------------------------
+>>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
+>>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db

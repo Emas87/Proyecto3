@@ -347,7 +347,7 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    FILE *in=NULL;
    
    system("pdflatex Scheduling_TR.tex > temp.o");
-   system("evince Scheduling_TR.pdf > temp.o");   
+   system("evince Scheduling_TR.pdf & > temp.o");   
    system("rm *.aux *.log *.nav *.out *.snm *.toc *.vrb > temp.o");      
 
    //gtk_main_quit();
