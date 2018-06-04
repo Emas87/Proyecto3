@@ -54,19 +54,6 @@ void Compute(gpointer context_object){
    CrearMatriz(caso,N_tareas,p,te);
    gtk_main_quit();
 }
-void prev_window_A(GtkWidget *widget, gpointer context_object ){
-   GtkWidget *prev = g_object_get_data (context_object, "window2");
-   GtkWidget *curr = g_object_get_data (context_object, "window3");
-	gtk_widget_show(prev);
-   gtk_widget_destroy(curr);
-}
-void prev_window_T(GtkWidget *widget, gpointer context_object ){
-   GtkWidget *prev = g_object_get_data (context_object, "window1");
-   GtkWidget *curr = g_object_get_data (context_object, "window2");
-	gtk_widget_show(prev);
-   gtk_widget_destroy(curr);
-}
-
 void test_a(GtkWidget *widget, gpointer context_object){//Test Algoritmos
    
    GtkWidget *cb_rm = g_object_get_data (context_object, "cb_rm");
@@ -86,7 +73,6 @@ void test_a(GtkWidget *widget, gpointer context_object){//Test Algoritmos
 void Algoritmos( gpointer context_object){
    GtkWidget *window3 = NULL;
   	GtkWidget *box = NULL;
-   GtkWidget *b_prev = NULL;
    GtkWidget *b_finish = NULL;
    GtkWidget *win_prev = g_object_get_data (context_object, "window2");
 
@@ -98,8 +84,6 @@ void Algoritmos( gpointer context_object){
 	gtk_window_set_title (GTK_WINDOW (window3), "Tipos de Algoritmos");
 	gtk_window_set_position (GTK_WINDOW (window3), GTK_WIN_POS_CENTER);   
 	gtk_widget_realize (window3);
-   //g_object_set_data (context_object, "prev", win_prev);
-   //g_object_set_data (context_object, "curr", window3 );
 	g_signal_connect (window3, "destroy", gtk_main_quit , NULL);
 
    // Create a box with buttons
@@ -116,12 +100,9 @@ void Algoritmos( gpointer context_object){
    GtkWidget *independiente = gtk_check_button_new_with_label ("Slides separados");
 	gtk_box_pack_start (GTK_BOX (box),independiente , TRUE, TRUE , 10);
 
-	b_prev = gtk_button_new_with_label("Previous");
 	b_finish = gtk_button_new_with_label("Finish");
 
-   //g_object_set_data (context_object, "", win_prev);
    g_object_set_data (context_object, "window3", window3);
-	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window_A),context_object );
    g_object_set_data (context_object, "cb_rm",cb_rm );
    g_object_set_data (context_object, "cb_edf",cb_edf );
    g_object_set_data (context_object, "cb_llf",cb_llf );
@@ -131,7 +112,6 @@ void Algoritmos( gpointer context_object){
    g_object_set_data (context_object, "label_a",label_a);
 	g_signal_connect (G_OBJECT (b_finish), "clicked", G_CALLBACK (test_a), context_object );
 	gtk_box_pack_start (GTK_BOX (box), label_a, TRUE,TRUE , 10);      
-	//gtk_box_pack_start (GTK_BOX (box), b_prev, TRUE, TRUE, 10);
 	gtk_box_pack_start (GTK_BOX (box), b_finish, TRUE,TRUE , 10);
 	gtk_widget_show_all (window3);
 }
@@ -179,20 +159,6 @@ int test_e(GtkWidget *widget, gpointer context_object){//Test Entradas
    }
    Algoritmos(context_object);
 }
-void sure(GtkWidget *widget,gpointer context_object)
-{
-   GtkWidget *dialog = NULL;
-   GtkWidget *curr = g_object_get_data (context_object, "curr");
-   dialog = gtk_message_dialog_new (GTK_WINDOW (curr), GTK_DIALOG_MODAL , GTK_MESSAGE_QUESTION , GTK_BUTTONS_YES_NO, "Esta seguro que quiere salir?");
-   //dialog = gtk_message_dialog_new (GTK_WINDOW (curr), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "Hello World!");
-   gtk_window_set_title(GTK_WINDOW(dialog), "Salir?");
-   gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
-   if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES){
-      gtk_main_quit();
-   }
-   gtk_widget_destroy(dialog);
-	gtk_widget_show(curr);
-}
 GtkWidget* create_integer_spin_button (void){
    GtkWidget *window, *button;
    GtkAdjustment *adjustment;
@@ -204,7 +170,6 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
    GtkWidget *window2 = NULL;
   	GtkWidget *box = NULL;
    GtkWidget *b_next = NULL;
-   GtkWidget *b_prev = NULL;
    GtkWidget *s_button = g_object_get_data (context_object, "s_button");
    GtkWidget *win = g_object_get_data (context_object, "window1");
 
@@ -253,16 +218,13 @@ void Ejec_Per (GtkWidget *wid,gpointer context_object){
       g_object_set_data (context_object, label ,entry_p[i]);
    }
 	b_next = gtk_button_new_with_label("Next");
-	b_prev = gtk_button_new_with_label("Previous");
 
    g_object_set_data (context_object, "window2", window2);
-	g_signal_connect (G_OBJECT (b_prev), "clicked", G_CALLBACK (prev_window_T),context_object );
    GtkWidget *label_correctitud = gtk_label_new(""); //Label que indica si las entradas son correctas
    g_object_set_data (context_object, "label_c",label_correctitud);
 	g_signal_connect (G_OBJECT (b_next), "clicked", G_CALLBACK (test_e), context_object );
 	gtk_box_pack_start (GTK_BOX (box), label_correctitud , TRUE, TRUE, 10);
    gtk_box_pack_start (GTK_BOX (box), b_next, TRUE, TRUE , 10);
-	//gtk_box_pack_start (GTK_BOX (box), b_prev,TRUE , TRUE, 10);
 
 
 	gtk_widget_show_all (window2);
@@ -307,9 +269,6 @@ int main (int argc, char *argv[]){
    //Senales
    g_object_set_data (G_OBJECT(b_next), "s_button", s_button);
    g_object_set_data (G_OBJECT(b_next), "window1", win );
-
-   //function_par1 -> s_button = s_button;
-   //function_par1 -> win = win;
 
 	g_signal_connect (G_OBJECT (b_next), "clicked", G_CALLBACK (Ejec_Per), b_next );
 

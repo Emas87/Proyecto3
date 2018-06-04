@@ -8,18 +8,15 @@
 \begin{tabular}{|l|l|l|} 
 \hline 
 \cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 500  &  100\\ \hline 
-T2   & 500  &  200\\ \hline 
-T3   & 500  &  200\\ \hline 
-T4   & 500  &  1\\ \hline 
-T5   & 500  &  2\\ \hline 
-T6   & 500  &  3\\ \hline 
+T1   & 9  &  3\\ \hline 
+T2   & 8  &  2\\ \hline 
+T3   & 7  &  5\\ \hline 
 \end{tabular} 
 \caption{Datos  Rate Monotonic } 
 \end{table} 
 Condicion: $\mu \leq U(n)$ \\ 
-$\mu =  1,012000 $ \\ 
-$U(n) =  0,734772 $ \\ 
+$\mu =  1,297619 $ \\ 
+$U(n) =  0,779763 $ \\ 
 Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\ 
 \end{frame} 
 

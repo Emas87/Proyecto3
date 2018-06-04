@@ -8,12 +8,6 @@
 #include "join.h"
 #include "clean.h"
 
-struct matrixs{
-   int *rm;
-   int *edf;
-   int *llf;
-} matrixs;
-
 gint grab_int_value (GtkSpinButton *button, gpointer user_data){
    return gtk_spin_button_get_value_as_int (button);
 }
@@ -46,7 +40,7 @@ int RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
    }
 
    int aux = 0;
-   for(int i = 1; i < N_tareas; i++){//orden tiene el orden en que se va arevisar las prioridades
+   for(int i = 1; i < N_tareas; i++){//orden tiene el orden en que se va a revisar las prioridades
       for(int j = 0; j < (N_tareas - i); ++j){
          if(p[orden[j]] > p[orden[j]+1]){
             aux = orden[j];
@@ -56,11 +50,11 @@ int RM(int N_tareas,int *p,int *te,int mcm_r,int *output){
       }
    }
    while(tiempo <= mcm_r){
-      for(int i = 0; i < N_tareas; i++){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
-         if(tiempo != 0 && tiempo % p[orden[i]] == 0 && remaining[orden[i]]>0){//Se verifica si alguna trea perdio el deadline
+      for(int i = 0; i < N_tareas; i++){
+         if(tiempo != 0 && tiempo % p[orden[i]] == 0 && remaining[orden[i]]>0){//Se verifica si alguna tarea perdio el deadline
             pos_f = tiempo;
          }
-
+         //Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola
          if(tiempo % p[orden[i]] == 0){
             cola_ready[orden[i]] = 1;
             remaining[orden[i]] = te[orden[i]];
@@ -92,7 +86,7 @@ int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    int remaining[N_tareas];
    int tiempo = 0;
    int laxity[N_tareas];   
-   int least_laxity=mcm_r;
+   int least_laxity=mcm_r;//Se inicia el least lexity para que se calcule en el proximo ciclo
    int next = 0;
    int remain_deadline[N_tareas];
    int pos_f = 0;//posicion donde falla
@@ -101,10 +95,12 @@ int LLF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    }
    while(tiempo <= mcm_r){
       for(int i = 0; i < N_tareas; i++){
-         if(tiempo != 0 && tiempo % p[i] == 0 && remaining[i]>0){//Se verifica si alguna trea perdio el deadline
+         //Se verifica si alguna trea perdio el deadline
+         if(tiempo != 0 && tiempo % p[i] == 0 && remaining[i]>0){
             pos_f = tiempo;
          }
-         if(tiempo % p[i] == 0){//Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola de ready
+         //Ver si se cumple el periodo de una tarea, porque eso significa entra a la cola de ready
+         if(tiempo % p[i] == 0){
             cola_ready[i] = 1;
             remaining[i] = te[i];
             remain_deadline[i] += p[i];
@@ -181,6 +177,7 @@ int EDF(int N_tareas,int *p,int *te,int mcm_r,int *output){
    }
    return pos_f;
 }
+//Funcion que imprime matrices en la terminal
 void print_matr(int *output_rm,int *output_edf,int *output_llf,int N_tareas,int mcm_r,int pos_f_rm,int pos_f_edf,int pos_f_llf){
    int largo_rm = mcm_r;
    int largo_edf = mcm_r;
@@ -224,7 +221,6 @@ void print_matr(int *output_rm,int *output_edf,int *output_llf,int N_tareas,int 
    printf("}\n");   
 }
 void CrearMatriz(int caso,int N_tareas,int *p,int *te){
-   struct matrixs output;
    float miu,Un;
    int pos_f_rm = 0,pos_f_edf = 0,pos_f_llf = 0;//En caso de falla se guarda la posicion
    int mcm_r = 1;//minimo comun multiplo resultado
@@ -232,7 +228,6 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
       mcm_r = mcm(mcm_r,p[i]);
       miu = 0;
    }
-   printf("minimo comun multiplo es: %d\n",mcm_r);   
    //La escala va a ser el maximo comun divisor de todos los periodos y los tiempos de ejecucion
    int escala = mcm_r;//se usa el mcm al inicio para que no inlfuya en el maximo comun divisor 
    for(int i = 0;i<N_tareas;i++){
@@ -246,10 +241,6 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    for(int i = 0;i<N_tareas;i++){
       miu += (float)te[i]/(float)p[i];
    }
-   //Funcion de la ecuaciones
-   //ecuacion(N_tareas,te,p,miu,Un);
-
-   //printf("escala: %d\n",escala);
    //Ahora se divide entre la escala
    for(int i = 0;i<N_tareas;i++){
       p[i] = p[i]/escala;
@@ -258,6 +249,7 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
       te[i] = te[i]/escala;
    }
    mcm_r = mcm_r/escala;
+   //Se inician todas las matrices con ceros
    int output_rm[N_tareas][mcm_r];
    memset(output_rm, 0, sizeof output_rm );
    int output_edf[N_tareas][mcm_r];
@@ -324,9 +316,8 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
    }
 
    print_matr((int*)output_rm,(int*)output_edf,(int*)output_llf,N_tareas,mcm_r,pos_f_rm,pos_f_edf,pos_f_llf);
-   //printf("posiciones de falla %d %d %d\n",pos_f_rm,pos_f_edf,pos_f_llf);
-   //create(int * tasks,int modo,int N_tareas,int mcm_r,int pos_fall,int escala){
    clean();
+   //Se crean las tablas en latex
    if(create_mode == 1 || create_mode == 3 || create_mode == 4 || create_mode == 5){
       ecuacion(0,N_tareas,te,p,miu,Un);
       create((int*)output_rm, 0, N_tareas, mcm_r, pos_f_rm, escala);//RM
@@ -345,14 +336,12 @@ void CrearMatriz(int caso,int N_tareas,int *p,int *te){
 
    join();
    FILE *in=NULL;
-   
+   //Se crea el pdf final
    system("pdflatex Scheduling_TR.tex > temp.o");
    system("evince Scheduling_TR.pdf & > temp.o");   
-   system("rm *.aux *.log *.nav *.out *.snm *.toc *.vrb > temp.o");      
-
-   //gtk_main_quit();
+   system("rm *.aux *.log *.nav *.out *.snm *.toc > temp.o");      
 }
-int isNumericString(const gchar *s){
+int isNumericString(const gchar *s){//Verifica que string este compuesto solo de numeros enteros
    int i=0, isNumeric = 0, ctDecimalPointsSeen=0;
    while(s[i] != '\0'){
       if (!isdigit(s[i])){         
