@@ -1,0 +1,77 @@
+%------------------------------------------------
+
+\section{Earliest Deadline First}
+
+\subsection{Algoritmo EDF}
+
+\begin{frame} 
+\frametitle{Algoritmo Earliest Deadline First (EDF)} 
+
+Presentado por Liu y Layland en 1973. \\
+Algoritmo de scheduling dinamico, derivado de HPF Prioridades Fijas. \\
+Supuestos de EDF son los mismos que los de RM. \\
+Prioridad es inversamente proporcional al tiempo pendiente para que se de el deadline de la tarea. \\
+Algoritmo expropiativo:
+\begin{itemize}
+\item Cuando una tarea llega a la cola de ready se revisan las prioridades.
+\item Se puede quitar a una tarea que este usando el CPU.
+\end{itemize} 
+
+
+La condicion necesaria y suficiente para la schedulability de $n$ tareas bajo EDF es:
+\begin{center}
+$\mu \leq 1$
+\end{center}
+
+Donde:
+\begin{center}
+$\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------
+\subsection{Tests de Schedulability  Earliest Deadline First } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Earliest Deadline First } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 3  &  1\\ \hline 
+T2   & 3  &  1\\ \hline 
+T3   & 3  &  1\\ \hline 
+\end{tabular} 
+\caption{Datos  Earliest Deadline First } 
+\end{table} 
+Condicion: $\mu \leq 1$ \\ 
+$\mu =  1,000000 $ \\ 
+Dado que $\mu \leq 1$ el algoritmo indica que las tareas si son schedulable \\ 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo  Earliest Deadline First } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo  Earliest Deadline First } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|l|} 
+\hline 
+St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} \\ \hline 
+T1 & & & \cellcolor{blue} \\ \hline 
+T2 & & \cellcolor{purple} & \\ \hline 
+T3 & \cellcolor{cyan} & & \\ \hline 
+\end{tabular} 
+\caption{ Earliest Deadline First 1 } 
+\end{table} 
+Escala Bloque : Ciclos = 1 : 1 \\ 
+Posicion Fallo: No hay ningun fallo \\ 
+mcm:  3 \\ 
+\end{frame} 
+
+%------------------------------------------------

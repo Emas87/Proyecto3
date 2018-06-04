@@ -32,7 +32,7 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
       strcpy(show_mode,"Rate Monotonic");
    } else if(modo==1){
       fp_edit = fopen("files/FULL_edit_EDF.txt", "w");
-      strcpy(show_mode,"Earliest Dead First");
+      strcpy(show_mode,"Earliest Deadline First");
    } else if(modo==2){
       fp_edit = fopen("files/FULL_edit_LLF.txt", "w");
       strcpy(show_mode,"Least Laxity First");

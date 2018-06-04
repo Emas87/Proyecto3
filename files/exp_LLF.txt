@@ -6,7 +6,30 @@
 
 \begin{frame} 
 \frametitle{Algoritmo Least Laxity First (LLF)} 
-Explicacion Basica de LLF \\
+
+Prioridad es inversamente proporcional al laxity de la tarea. \\
+Algoritmo expropiativo\\
+Supuestos de LLF:
+\begin{itemize}
+\item Las solicitudes de todas las tareas críticas son periódicas.
+\item Todas las tareas son independientes.
+\item Se conoce a priori el tiempo de computacion.
+\item El cambio de contexto es igual a cero, o esta incluido en el tiempo de computacion.
+\item El Laxity corresponde a: $X_i = d_i - t - c_i$.
+\end{itemize} 
+
+Donde $d_i$ es el deadline, $t$ es el tiempo actual, y $c_i$ es el tiempo de ejecucion que le falta a la tarea.
+
+La condicion necesaria y suficiente para la schedulability de $n$ tareas bajo LLF es:
+\begin{center}
+$\mu \leq 1$
+\end{center}
+
+Donde:
+\begin{center}
+$\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
+\end{center}
+
 \end{frame}
 
 %------------------------------------------------

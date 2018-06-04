@@ -324,7 +324,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    } 
    if(modo==8 || modo==9 || modo==10){ //EDF
-      fprintf(fp_edit, "%s %s", "Informacion de Earliest Dead First:\\\\", "\n");
+      fprintf(fp_edit, "%s %s", "Informacion de Earliest Deadline First:\\\\", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{itemize}", "\n");
       if(pos_fall_edf==0){
          fprintf(fp_edit, "%s %s %s", "\\item Posicion Fallo: No hay ningun fallo", "\\\\", "\n");

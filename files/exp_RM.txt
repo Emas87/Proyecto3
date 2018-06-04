@@ -6,7 +6,28 @@
 
 \begin{frame} 
 \frametitle{Algoritmo Rate Monotonic (RM)} 
-Explicacion Basica de RM \\
+
+Presentado por Liu y Layland en 1973. \\
+Algoritmo de scheduling dinamico, derivado de HPF Prioridades Fijas. \\
+Supuestos de RM:
+\begin{itemize}
+\item Las solicitudes de todas las tareas criticas son periodicas.
+\item Todas las tareas son independientes.
+\item El deadline de cada tarea es igual al periodo.
+\item Se conoce a priori el tiempo de computacion.
+\item El cambio de contexto es igual a cero, o esta incluido en el tiempo de computacion.
+\end{itemize} 
+
+La condicion suficiente para la schedulability de $n$ tareas bajo RM es:
+\begin{center}
+$\mu \leq U(n) = n(2^{\frac{1}{n}}-1)$
+\end{center}
+
+Donde:
+\begin{center}
+$\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
+\end{center}
+
 \end{frame}
 
 %------------------------------------------------
