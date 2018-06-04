@@ -4,13 +4,14 @@
 #include "sub_create.h"
 #include "ecuacion.h"
 
+// This function calculates the filas, columnas and iterations to display in the slides
 int positions(int N_tareas, int mcm_r, int pos_fall, int *filas, int * columnas, int *it){
 
    int i,resto;
 
-   if(mcm_r>24){
+   if(mcm_r>24){ // Scheduling does not fit in one slide, 24 is the max num of columns the slide can show
 
-      if(pos_fall==0){
+      if(pos_fall==0){ // There is no fail
          resto = mcm_r%24;
          if(resto==0){
             *it = mcm_r/24;
@@ -24,7 +25,7 @@ int positions(int N_tareas, int mcm_r, int pos_fall, int *filas, int * columnas,
             }
             columnas[*it] = resto;
          }
-      } else {
+      } else { // There is a failure
          if(pos_fall>24){
             resto = pos_fall%24;
             if(resto==0){
@@ -46,7 +47,7 @@ int positions(int N_tareas, int mcm_r, int pos_fall, int *filas, int * columnas,
       }
       *filas = N_tareas;
    }
-   else if(mcm_r<=24){
+   else if(mcm_r<=24){ // Scheduling fits in one slide, 24 is the max num of columns the slide can show
       *it = 1;
       *filas = N_tareas;
       if(pos_fall==0){
@@ -70,6 +71,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
    positions(N_tareas, mcm_r, pos_fall_edf, &filas, (int*)&columnas_EDF, &it_EDF);
    positions(N_tareas, mcm_r, pos_fall_llf, &filas, (int*)&columnas_LLF, &it_LLF);
 
+   // Selecting greatest iteration value
    if(it_RM>=it_EDF && it_RM>=it_LLF){
       it = it_RM;
    } else 
@@ -82,10 +84,12 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    if(modo==8){
 
+      //Creating Ecuation Info
       ecuacion(0,N_tareas,te,p,miu,Un);//RM
       ecuacion(1,N_tareas,te,p,miu,Un);//EDF
       ecuacion(2,N_tareas,te,p,miu,Un);//LLF
 
+      // Opening all files
       FILE *fp_exp_RM = fopen("files/exp_RM.txt", "r");
       FILE *fp_exp_EDF = fopen("files/exp_EDF.txt", "r");
       FILE *fp_exp_LLF = fopen("files/exp_LLF.txt", "r");
@@ -93,6 +97,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       FILE *fp_ec_EDF = fopen("files/ec_EDF.txt", "r");
       FILE *fp_ec_LLF = fopen("files/ec_LLF.txt", "r");
 
+      // Joining files
       while ((c = fgetc(fp_exp_RM)) != EOF)
          fputc(c, fp_edit);
       while ((c = fgetc(fp_exp_EDF)) != EOF)
@@ -106,6 +111,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       while ((c = fgetc(fp_ec_LLF)) != EOF)
          fputc(c, fp_edit);
 
+      // Closing opened files
       fclose(fp_exp_RM);
       fclose(fp_exp_EDF);
       fclose(fp_exp_LLF);
@@ -113,6 +119,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
       fclose(fp_ec_EDF);
       fclose(fp_ec_LLF);
 
+      // Creating slides
       for(k=0;k<it;k++) {
 
          fprintf(fp_edit, "%s %s", "\\subsection{Tabla de Tiempo Completa}", "\n");
@@ -301,6 +308,7 @@ void wrapper(int *tasks_rm, int *tasks_edf, int *tasks_llf, int modo, int N_tare
 
    }
 
+   // Creating Extra information slide
    fprintf(fp_edit, "%s %s", "\\subsection{Informacion de Tabla de Tiempo Completa}", "\n");
    fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
    fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");

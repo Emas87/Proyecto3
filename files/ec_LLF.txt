@@ -8,15 +8,14 @@
 \begin{tabular}{|l|l|l|} 
 \hline 
 \cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 9  &  3\\ \hline 
-T2   & 8  &  2\\ \hline 
-T3   & 7  &  5\\ \hline 
+T1   & 15  &  4\\ \hline 
+T2   & 10  &  3\\ \hline 
 \end{tabular} 
 \caption{Datos  Least Laxity First } 
 \end{table} 
 Condicion: $\mu \leq 1$ \\ 
-$\mu =  1,297619 $ \\ 
-Dado que $\mu>1$ el algoritmo indica que las tareas no son schedulable \\ 
+$\mu =  0,566667 $ \\ 
+Dado que $\mu \leq 1$ el algoritmo indica que las tareas si son schedulable \\ 
 \end{frame} 
 
 %------------------------------------------------

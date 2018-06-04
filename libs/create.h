@@ -6,6 +6,7 @@
 //modo 1 EDF
 //modo 2 LLF
 
+// Creating only one slide for the different algorithm
 void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala){
 
    const char *task_name[6];
@@ -27,6 +28,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
    char show_mode[512];
    FILE *fp_edit;
 
+   // Selecting file to open and write   
    if(modo==0){
       fp_edit = fopen("files/edit_RM.txt", "w");
       strcpy(show_mode,"Rate Monotonic");
@@ -40,6 +42,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
    char c;
 
+   // Selecting explanation of algorithm file
    if(modo==0){
       FILE *fp_exp_RM = fopen("files/exp_RM.txt", "r");
       while ((c = fgetc(fp_exp_RM)) != EOF)
@@ -82,6 +85,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
 
    fprintf(fp_edit, "%s %s %s %s", "\\subsection{Tabla de Tiempo ", show_mode ,"}", "\n");
 
+   // Creating Slides
    for(k=0;k<it;k++) {
 
       fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
@@ -89,7 +93,6 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %s %s %s", "\\frametitle{Tabla de Tiempo ", show_mode ,"}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
-//      fprintf(fp_edit, "%s %s", "\\resizebox{!}{.075\\linewidth}{", "\n");
 
       char str[512];
       strcpy(str,"\\begin{tabular}{|l|");
@@ -105,10 +108,8 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-//            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
             fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{red} ");
          } else {
-//            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
             fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{green} ");
          }
       }
@@ -129,7 +130,6 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       }
       
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
-//      fprintf(fp_edit, "%s %s", "}", "\n");
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
       fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");

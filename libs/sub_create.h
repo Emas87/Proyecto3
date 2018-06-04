@@ -6,6 +6,7 @@
 //modo 1 EDF
 //modo 2 LLF
 
+// This subcreate function is used to create only the tables, not the slide, is used with the wrapper function
 void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int escala, int filas, int *columnas, int k, int it){
 
    const char *task_name[6];
@@ -27,6 +28,7 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
    char show_mode[512];
    FILE *fp_edit;
 
+   // Selecting file to open and write 
    if(modo==0){
       fp_edit = fopen("files/FULL_edit_RM.txt", "w");
       strcpy(show_mode,"Rate Monotonic");
@@ -39,53 +41,51 @@ void sub_create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int
    }
 
    int i,j,resto;
+   
+   // Creating Table
+   fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
+   fprintf(fp_edit, "%s %s", "\\centering", "\n");
+   fprintf(fp_edit, "%s %s", "\\resizebox{!}{.07\\linewidth}{", "\n");
 
-      fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
-      fprintf(fp_edit, "%s %s", "\\centering", "\n");
-      fprintf(fp_edit, "%s %s", "\\resizebox{!}{.07\\linewidth}{", "\n");
+   char str[512];
+   strcpy(str,"\\begin{tabular}{|l|");
+   for(i=0;i<columnas[k+1];i++){
+      strcat(str,"l|");
+   }
+   strcat(str,"}");
+   fprintf(fp_edit, "%s %s", str, "\n");
 
-      char str[512];
-      strcpy(str,"\\begin{tabular}{|l|");
-      for(i=0;i<columnas[k+1];i++){
-         strcat(str,"l|");
+   fprintf(fp_edit, "%s %s", "\\hline", "\n");
+
+   //Status
+   fprintf(fp_edit, "%s", "St ");
+   for(j=0;j<columnas[k+1];j++){
+      if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
+         fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{red} ");
+      } else {
+         fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{green} ");
       }
-      strcat(str,"}");
-      fprintf(fp_edit, "%s %s", str, "\n");
+   }
+   fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
 
-      fprintf(fp_edit, "%s %s", "\\hline", "\n");
-
-      //Status
-      fprintf(fp_edit, "%s", "St ");
+   //Tasks
+   for(i=0;i<filas;i++){
+      fprintf(fp_edit, "%s", task_name[i]);
       for(j=0;j<columnas[k+1];j++){
-         if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-//            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
-            fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{red} ");
-         } else {
-//            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
-            fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{green} ");
+         if(*((tasks+i*mcm_r) + j+(k*24))==0){
+            fprintf(fp_edit, "%s", "& ");
+         } 
+         else if(*((tasks+i*mcm_r) + j+(k*24))==1){
+            fprintf(fp_edit, "%s", task_color[i]);
          }
       }
       fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
-
-      //Tasks
-      for(i=0;i<filas;i++){
-         fprintf(fp_edit, "%s", task_name[i]);
-         for(j=0;j<columnas[k+1];j++){
-            if(*((tasks+i*mcm_r) + j+(k*24))==0){
-               fprintf(fp_edit, "%s", "& ");
-            } 
-            else if(*((tasks+i*mcm_r) + j+(k*24))==1){
-               fprintf(fp_edit, "%s", task_color[i]);
-            }
-         }
-         fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
-      }
+   }
       
-      fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
-      fprintf(fp_edit, "%s %s", "}", "\n");
-      fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
-      fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
-
+   fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
+   fprintf(fp_edit, "%s %s", "}", "\n");
+   fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
+   fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
 
    fclose(fp_edit);
 

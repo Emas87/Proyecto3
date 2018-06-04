@@ -6,6 +6,7 @@
 //modo 1 EDF
 //modo 2 LLF
 
+// This function creates the different algorithm information slides
 void ecuacion(int modo, int N_tareas, int *te, int *p, double miu, double Un){
 
    const char *task_name[6];
@@ -34,6 +35,7 @@ void ecuacion(int modo, int N_tareas, int *te, int *p, double miu, double Un){
    int i,j;
    int filas,columnas[512];
 
+   // Creating slide
    fprintf(fp_edit, "%s %s %s %s", "\\subsection{Tests de Schedulability ", show_mode ,"}", "\n");
    fprintf(fp_edit, "%s","\n%------------------------------------------------\n");
    fprintf(fp_edit, "%s %s", "\\begin{frame}", "\n");
