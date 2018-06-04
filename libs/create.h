@@ -89,6 +89,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s %s %s %s", "\\frametitle{Tabla de Tiempo ", show_mode ,"}", "\n");
       fprintf(fp_edit, "%s %s", "\\begin{table}", "\n");
       fprintf(fp_edit, "%s %s", "\\centering", "\n");
+//      fprintf(fp_edit, "%s %s", "\\resizebox{!}{.075\\linewidth}{", "\n");
 
       char str[512];
       strcpy(str,"\\begin{tabular}{|l|");
@@ -104,9 +105,11 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       fprintf(fp_edit, "%s", "St ");
       for(j=0;j<columnas[k+1];j++){
          if((j==(columnas[k+1]-1)) && (k==it-1) && pos_fall!=0){
-            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
+//            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{red} ");
+            fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{red} ");
          } else {
-            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
+//            fprintf(fp_edit, "%s %d %s", "& ", 1+j+k*24, "\\cellcolor{green} ");
+            fprintf(fp_edit, "%s %s", "& ", "\\cellcolor{green} ");
          }
       }
       fprintf(fp_edit, "%s %s %s", "\\\\", "\\hline", "\n");
@@ -126,6 +129,7 @@ void create(int *tasks, int modo, int N_tareas, int mcm_r, int pos_fall, int esc
       }
       
       fprintf(fp_edit, "%s %s", "\\end{tabular}", "\n");
+//      fprintf(fp_edit, "%s %s", "}", "\n");
       fprintf(fp_edit, "%s %s %d %s %s", "\\caption{", show_mode, k+1, "}", "\n");
       fprintf(fp_edit, "%s %s", "\\end{table}", "\n");
       fprintf(fp_edit, "%s %d %s %s", "Escala Bloque : Ciclos = 1 :", escala, "\\\\", "\n");

@@ -96,7 +96,6 @@ I Semestre - 2018
 
 \begin{frame} 
 \frametitle{Algoritmo Rate Monotonic (RM)} 
-<<<<<<< HEAD
 
 Presentado por Liu y Layland en 1973. \\
 Algoritmo de scheduling dinamico, derivado de HPF Prioridades Fijas. \\
@@ -119,174 +118,11 @@ Donde:
 $\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
 \end{center}
 
-=======
-Explicacion Basica de RM \\
 \end{frame}
 
 %------------------------------------------------
-\subsection{Tests de Schedulability  Rate Monotonic } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tests de Schedulability  Rate Monotonic } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|} 
-\hline 
-Tareas & Periodo & T. Ejecucion \\ \hline 
-T1   & 3  &  1\\ \hline 
-T2   & 5  &  2\\ \hline 
-T3   & 4  &  2\\ \hline 
-\end{tabular} 
-\caption{Datos  Rate Monotonic } 
-\end{table} 
-Mu =  1,233333 \\ 
-U(n) =  0,779763 \\ 
-\end{frame} 
-
-%------------------------------------------------
-\subsection{Tabla de Tiempo  Rate Monotonic } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tabla de Tiempo  Rate Monotonic } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|l|l|l|l|} 
-\hline 
-St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{red} \\ \hline 
-T1 & \cellcolor{blue} & & & \cellcolor{blue} & & \\ \hline 
-T2 & & & & & & \\ \hline 
-T3 & & \cellcolor{cyan} & \cellcolor{cyan} & & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
-\end{tabular} 
-\caption{ Rate Monotonic 1 } 
-\end{table} 
-Escala Bloque : Ciclos = 1 : 1 \\ 
-Posicion Fallo:  5 \\ 
-mcm:  60 \\ 
-\end{frame} 
-
-%------------------------------------------------
 %------------------------------------------------
 
-\section{Earliest Dead First}
-
-\subsection{Algoritmo EDF}
-
-\begin{frame} 
-\frametitle{Algoritmo Earliest Dead First (EDF)} 
-Explicacion Basica de EDF \\
->>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db
-\end{frame}
-
-%------------------------------------------------
-\subsection{Tests de Schedulability  Earliest Dead First } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tests de Schedulability  Earliest Dead First } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|} 
-\hline 
-<<<<<<< HEAD
-Tareas & Periodo & T. Ejecucion \\ \hline 
-T1   & 3  &  1\\ \hline 
-T2   & 5  &  2\\ \hline 
-T3   & 4  &  2\\ \hline 
-=======
-\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-<<<<<<< HEAD
-T1   & 3  &  1\\ \hline 
-T2   & 3  &  1\\ \hline 
-T3   & 3  &  1\\ \hline 
-=======
-T1   & 6  &  1\\ \hline 
-T2   & 6  &  2\\ \hline 
-T3   & 6  &  3\\ \hline 
-T4   & 6  &  4\\ \hline 
-T5   & 6  &  5\\ \hline 
-T6   & 6  &  6\\ \hline 
->>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
->>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db
-\end{tabular} 
-\caption{Datos  Earliest Dead First } 
-\end{table} 
-<<<<<<< HEAD
-Mu =  1,233333 \\ 
-U(n) =  0,779763 \\ 
-=======
-Condicion: $\mu \leq U(n)$ \\ 
-$\mu =  1,000000 $ \\ 
-$U(n) =  0,779763 $ \\ 
-Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\ 
->>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
-\end{frame} 
-
-%------------------------------------------------
-<<<<<<< HEAD
-\subsection{Tabla de Tiempo  Rate Monotonic } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tabla de Tiempo  Rate Monotonic } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|l|} 
-\hline 
-St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} \\ \hline 
-T1 & \cellcolor{blue} & & \\ \hline 
-T2 & & \cellcolor{purple} & \\ \hline 
-T3 & & & \cellcolor{cyan} \\ \hline 
-\end{tabular} 
-\caption{ Rate Monotonic 1 } 
-\end{table} 
-Escala Bloque : Ciclos = 1 : 1 \\ 
-Posicion Fallo: No hay ningun fallo \\ 
-mcm:  3 \\ 
-=======
-\subsection{Tabla de Tiempo  Earliest Dead First } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tabla de Tiempo  Earliest Dead First } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-\hline 
-<<<<<<< HEAD
-St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{red} \\ \hline 
-T1 & \cellcolor{blue} & & & & & \cellcolor{blue} & & & \cellcolor{blue} & & \\ \hline 
-T2 & & & & \cellcolor{purple} & \cellcolor{purple} & & & & & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
-T3 & & \cellcolor{cyan} & \cellcolor{cyan} & & & & \cellcolor{cyan} & \cellcolor{cyan} & & & \\ \hline 
-=======
-\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 6  &  1\\ \hline 
-T2   & 6  &  2\\ \hline 
-T3   & 6  &  3\\ \hline 
-T4   & 6  &  4\\ \hline 
-T5   & 6  &  5\\ \hline 
-T6   & 6  &  6\\ \hline 
->>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
-\end{tabular} 
-\caption{ Earliest Dead First 1 } 
-\end{table} 
-<<<<<<< HEAD
-Escala Bloque : Ciclos = 1 : 1 \\ 
-Posicion Fallo:  10 \\ 
-mcm:  60 \\ 
-=======
-Condicion: $\mu \leq 1$ \\ 
-$\mu =  3,500000 $ \\ 
-Dado que $\mu>1$ el algoritmo indica que las tareas no son schedulable \\ 
->>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
->>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db
-\end{frame} 
-
-%------------------------------------------------
-%------------------------------------------------
-
-<<<<<<< HEAD
 \section{Earliest Deadline First}
 
 \subsection{Algoritmo EDF}
@@ -316,106 +152,6 @@ $\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
 \end{center}
 
 \end{frame}
-
-%------------------------------------------------
-\subsection{Tests de Schedulability  Earliest Deadline First } 
-=======
-\section{Least Laxity First}
-
-\subsection{Algoritmo LLF}
-
-\begin{frame} 
-\frametitle{Algoritmo Least Laxity First (LLF)} 
-Explicacion Basica de LLF \\
-\end{frame}
-
-%------------------------------------------------
-\subsection{Tests de Schedulability  Least Laxity First } 
->>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tests de Schedulability  Earliest Deadline First } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|} 
-\hline 
-<<<<<<< HEAD
-Tareas & Periodo & T. Ejecucion \\ \hline 
-T1   & 3  &  1\\ \hline 
-T2   & 5  &  2\\ \hline 
-T3   & 4  &  2\\ \hline 
-\end{tabular} 
-\caption{Datos  Least Laxity First } 
-\end{table} 
-Mu =  1,233333 \\ 
-U(n) =  0,779763 \\ 
-=======
-\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 3  &  1\\ \hline 
-T2   & 3  &  1\\ \hline 
-T3   & 3  &  1\\ \hline 
-\end{tabular} 
-\caption{Datos  Earliest Deadline First } 
-\end{table} 
-<<<<<<< HEAD
-Condicion: $\mu \leq 1$ \\ 
-$\mu =  1,000000 $ \\ 
-Dado que $\mu \leq 1$ el algoritmo indica que las tareas si son schedulable \\ 
-\end{frame} 
-
-%------------------------------------------------
-\subsection{Tabla de Tiempo  Earliest Deadline First } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tabla de Tiempo  Earliest Deadline First } 
-\begin{table} 
-\centering 
-\begin{tabular}{|l|l|l|l|} 
-=======
-$\mu =  3,500000 $ \\ 
-$U(n) =  0,734772 $ \\ 
->>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
-\end{frame} 
-
-%------------------------------------------------
-\subsection{Tabla de Tiempo  Least Laxity First } 
-
-%------------------------------------------------
-\begin{frame} 
-\frametitle{Tabla de Tiempo  Least Laxity First } 
-\begin{table} 
-\centering 
-<<<<<<< HEAD
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|} 
-\hline 
-St & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{green} & \cellcolor{red} \\ \hline 
-T1 & & \cellcolor{blue} & & & & \cellcolor{blue} & & & & \\ \hline 
-T2 & & & & \cellcolor{purple} & \cellcolor{purple} & & & & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
-T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & & & \cellcolor{cyan} & \cellcolor{cyan} & & \\ \hline 
-\end{tabular} 
-\caption{ Least Laxity First 1 } 
-\end{table} 
-Escala Bloque : Ciclos = 1 : 1 \\ 
-Posicion Fallo:  9 \\ 
-mcm:  60 \\ 
-=======
-\resizebox{!}{.07\linewidth}{ 
-\begin{tabular}{|l|l|l|l|l|l|l|l|} 
->>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db
-\hline 
-St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} \\ \hline 
-T1 & & & \cellcolor{blue} \\ \hline 
-T2 & & \cellcolor{purple} & \\ \hline 
-T3 & \cellcolor{cyan} & & \\ \hline 
-\end{tabular} 
-\caption{ Earliest Deadline First 1 } 
-\end{table} 
-Escala Bloque : Ciclos = 1 : 1 \\ 
-Posicion Fallo: No hay ningun fallo \\ 
-mcm:  3 \\ 
-\end{frame} 
 
 %------------------------------------------------
 %------------------------------------------------
@@ -453,6 +189,57 @@ $\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
 \end{frame}
 
 %------------------------------------------------
+\subsection{Tests de Schedulability  Rate Monotonic } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Rate Monotonic } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 500  &  100\\ \hline 
+T2   & 500  &  200\\ \hline 
+T3   & 500  &  200\\ \hline 
+T4   & 500  &  1\\ \hline 
+T5   & 500  &  2\\ \hline 
+T6   & 500  &  3\\ \hline 
+\end{tabular} 
+\caption{Datos  Rate Monotonic } 
+\end{table} 
+Condicion: $\mu \leq U(n)$ \\ 
+$\mu =  1,012000 $ \\ 
+$U(n) =  0,734772 $ \\ 
+Dado que $\mu>U(n)$ el algoritmo indica que las tareas no son schedulable \\ 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tests de Schedulability  Earliest Deadline First } 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tests de Schedulability  Earliest Deadline First } 
+\begin{table} 
+\centering 
+\begin{tabular}{|l|l|l|} 
+\hline 
+\cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
+T1   & 500  &  100\\ \hline 
+T2   & 500  &  200\\ \hline 
+T3   & 500  &  200\\ \hline 
+T4   & 500  &  1\\ \hline 
+T5   & 500  &  2\\ \hline 
+T6   & 500  &  3\\ \hline 
+\end{tabular} 
+\caption{Datos  Earliest Deadline First } 
+\end{table} 
+Condicion: $\mu \leq 1$ \\ 
+$\mu =  1,012000 $ \\ 
+Dado que $\mu>1$ el algoritmo indica que las tareas no son schedulable \\ 
+\end{frame} 
+
+%------------------------------------------------
 \subsection{Tests de Schedulability  Least Laxity First } 
 
 %------------------------------------------------
@@ -463,59 +250,1219 @@ $\mu = \sum_{i=1}^{n}\frac{c_i}{p_i}$
 \begin{tabular}{|l|l|l|} 
 \hline 
 \cellcolor{lightgray}Tarea & \cellcolor{lightgray}$P_i$ & \cellcolor{lightgray}$C_i$ \\ \hline 
-T1   & 3  &  1\\ \hline 
-T2   & 3  &  1\\ \hline 
-T3   & 3  &  1\\ \hline 
+T1   & 500  &  100\\ \hline 
+T2   & 500  &  200\\ \hline 
+T3   & 500  &  200\\ \hline 
+T4   & 500  &  1\\ \hline 
+T5   & 500  &  2\\ \hline 
+T6   & 500  &  3\\ \hline 
 \end{tabular} 
 \caption{Datos  Least Laxity First } 
 \end{table} 
 Condicion: $\mu \leq 1$ \\ 
-$\mu =  1,000000 $ \\ 
-Dado que $\mu \leq 1$ el algoritmo indica que las tareas si son schedulable \\ 
+$\mu =  1,012000 $ \\ 
+Dado que $\mu>1$ el algoritmo indica que las tareas no son schedulable \\ 
 \end{frame} 
 
 %------------------------------------------------
-\subsection{Tabla de Tiempo  Least Laxity First } 
+\subsection{Tabla de Tiempo Completa} 
 
 %------------------------------------------------
 \begin{frame} 
-<<<<<<< HEAD
-\frametitle{Tabla de Tiempo  Least Laxity First } 
+\frametitle{Tabla de Tiempo Completa} 
 \begin{table} 
 \centering 
-\begin{tabular}{|l|l|l|l|} 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
 \hline 
-St &  1 \cellcolor{green} &  2 \cellcolor{green} &  3 \cellcolor{green} \\ \hline 
-T1 & & & \cellcolor{blue} \\ \hline 
-T2 & & \cellcolor{purple} & \\ \hline 
-T3 & \cellcolor{cyan} & & \\ \hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
 \end{tabular} 
+} 
+\caption{ Rate Monotonic 1 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & \cellcolor{gray} & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & \cellcolor{yellow} & \cellcolor{yellow} & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & \cellcolor{orange} & \cellcolor{orange} & \cellcolor{orange} & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 1 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
 \caption{ Least Laxity First 1 } 
 \end{table} 
-Escala Bloque : Ciclos = 1 : 1 \\ 
-Posicion Fallo: No hay ningun fallo \\ 
-mcm:  3 \\ 
-=======
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 2 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 2 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 2 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 3 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 3 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 3 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 4 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 4 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 4 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 5 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 5 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 5 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 6 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 6 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 6 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 7 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 7 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 7 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 8 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 8 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 8 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 9 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 9 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 9 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 10 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 10 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 10 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 11 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 11 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 11 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 12 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 12 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 12 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 13 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 13 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 13 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 14 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 14 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 14 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 15 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 15 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 15 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 16 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 16 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 16 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 17 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & \cellcolor{purple} & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 17 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 17 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 18 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 18 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 18 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 19 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 19 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 19 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 20 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 20 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 20 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{Tabla de Tiempo Completa} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{red} \\ \hline 
+T1 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Rate Monotonic 21 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{red} \\ \hline 
+T1 & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \cellcolor{blue} & \\ \hline 
+T2 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T3 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & & & & & \cellcolor{yellow} \\ \hline 
+T6 & & & & & & & & & & & & & & & & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Earliest Deadline First 21 } 
+\end{table} 
+\begin{table} 
+\centering 
+\resizebox{!}{.07\linewidth}{ 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline 
+St &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{green} &  \cellcolor{red} \\ \hline 
+T1 & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & \cellcolor{blue} & & & & \cellcolor{blue} & & & & & \cellcolor{blue} & \\ \hline 
+T2 & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & \cellcolor{purple} & & & & \cellcolor{purple} & & & & & \cellcolor{purple} & & \cellcolor{purple} \\ \hline 
+T3 & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & \cellcolor{cyan} & & & & \cellcolor{cyan} & & & & & \cellcolor{cyan} & & & \\ \hline 
+T4 & & & & & & & & & & & & & & & & & & & & & \\ \hline 
+T5 & & & & & & & & & & & & & & & & & \cellcolor{yellow} & & & & \\ \hline 
+T6 & & & & & & & & & & & & \cellcolor{orange} & & & & \cellcolor{orange} & & & & & \\ \hline 
+\end{tabular} 
+} 
+\caption{ Least Laxity First 21 } 
+\end{table} 
+\end{frame} 
+
+%------------------------------------------------
+\subsection{Informacion de Tabla de Tiempo Completa} 
+
+%------------------------------------------------
+\begin{frame} 
 \frametitle{Informacion de Tabla de Tiempo Completa} 
 Informacion General:\\ 
 \begin{itemize} 
 \item Escala Bloque : Ciclos = 1 : 1 \\ 
-\item mcm:  6 \\ 
+\item mcm:  500 \\ 
 \end{itemize} 
 Informacion de Rate Monotonic:\\ 
 \begin{itemize} 
-\item Posicion Fallo:  7 \\ 
+\item Posicion Fallo:  501 \\ 
 \end{itemize} 
-Informacion de Earliest Dead First:\\ 
+Informacion de Earliest Deadline First:\\ 
 \begin{itemize} 
-\item Posicion Fallo:  7 \\ 
+\item Posicion Fallo:  501 \\ 
 \end{itemize} 
 Informacion de Least Laxity First:\\ 
 \begin{itemize} 
-\item Posicion Fallo:  7 \\ 
+\item Posicion Fallo:  501 \\ 
 \end{itemize} 
->>>>>>> fd36befdf5b77500bc70c153b608ea71d8d72bbf
->>>>>>> 2853d6e448ad77fd00dfc7ea97cecdceaf9331db
 \end{frame} 
 
 %------------------------------------------------
